@@ -82,6 +82,13 @@
   #printArea{display:none}
   .ws-line{border-bottom:2px dotted #A79E8C;height:36px;margin:6px 0}
   .ws-answer{display:inline-block;min-width:130px;border-bottom:2px dotted #A79E8C}
+  .ws-draw{
+    border:3px dashed #C9C2B2;border-radius:14px;height:190px;margin:10px 0;
+    padding:10px;color:#B0A892;font-size:15px;
+  }
+  .ws-meta{display:flex;gap:30px;margin:10px 0;font-size:16px}
+  .ws-meta span{flex:1;border-bottom:2px dotted #A79E8C}
+  .ws-stars{font-size:30px;letter-spacing:8px}
   @media print{
     body{background:#fff;background-image:none;font-size:15px}
     #app{display:none!important}
@@ -956,6 +963,7 @@ function wsCard(num,text,drawHTML,lines){
   var ls='';
   for(var i=0;i<lines;i++) ls+='<div class="ws-line"></div>';
   return '<div class="card"><p><b>Задача '+num+'.</b> '+text+'</p>'+drawHTML+
+    '<div class="ws-draw">✏️ Нарисуй здесь свою картинку к задаче — она подскажет решение!</div>'+
     '<p><b>Решение:</b></p>'+ls+
     '<p><b>Ответ:</b> <span class="ws-answer"></span></p></div>';
 }
@@ -963,18 +971,20 @@ function wsCard(num,text,drawHTML,lines){
 function buildPrint(){
   var p=cur;
   var html='<h1>🌷 Математика — рабочий лист Нины</h1>'+
+    '<div class="ws-meta"><b>Дата:</b> <span></span> <b>Оценка:</b> <span></span></div>'+
     '<p>Реши каждую задачу по шагам: сначала рассмотри картинку, потом запиши решение. '+
-    'Если трудно — нарисуй свою картинку рядом! ✏️</p>';
+    'Если трудно — нарисуй свою картинку в рамке! ✏️</p>';
   html+=wsCard(1,p.text,p.draw(),4);
   p.exercises.forEach(function(e,i){
     html+=wsCard(i+2,e.text,e.draw(),3);
   });
-  html+='<p style="text-align:center;margin-top:18px">Молодец, Нина! Каждая решённая задача — это победа! 🏅</p>';
+  html+='<div class="card" style="text-align:center"><p><b>Оцени себя, Нина — закрась столько звёздочек, насколько было легко:</b></p>'+
+    '<p class="ws-stars">☆☆☆☆☆</p>'+
+    '<p>Молодец! Каждая решённая задача — это победа! 🏅</p></div>';
   document.getElementById('printArea').innerHTML=html;
 }
 
 home();
-</script>
 </script>
 </body>
 </html>
