@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Математика для Нины 🌷</title>
+<style>
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:#FFF7E8;
+    background-image:radial-gradient(#F6E3BE 1.6px, transparent 1.6px);
+    background-size:26px 26px;
+    color:#4A3B2A;
+    font-family:'Segoe UI','Trebuchet MS',Verdana,sans-serif;
+    font-size:19px;line-height:1.55;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:18px 14px 70px}
+  h1{font-family:'Comic Sans MS','Chalkboard SE','Segoe UI',cursive;font-size:30px;margin:8px 0;color:#D96C47}
+  h2{font-family:'Comic Sans MS','Chalkboard SE','Segoe UI',cursive;font-size:23px;color:#D96C47;margin:2px 0 12px}
+  .card{
+    background:#FFFDF6;border:3px solid #F3E0BC;border-radius:22px;
+    padding:18px;margin:14px 0;box-shadow:0 4px 0 #EEDCB6;
+  }
+  .btn{
+    display:inline-block;border:none;cursor:pointer;
+    font-family:'Comic Sans MS','Chalkboard SE',cursive;font-size:20px;
+    color:#fff;background:#FF8A5C;border-radius:999px;
+    padding:13px 26px;margin:6px 8px 6px 0;box-shadow:0 4px 0 #E06B3F;
+    transition:transform .08s;
+  }
+  .btn:active{transform:translateY(3px);box-shadow:0 1px 0 #E06B3F}
+  .btn.mint{background:#4FBFA0;box-shadow:0 4px 0 #37997E}
+  .btn.sky{background:#5AA9E6;box-shadow:0 4px 0 #3C84BE}
+  .btn.ghost{background:#fff;color:#D96C47;border:3px solid #F3D9A8;box-shadow:0 4px 0 #EEDCB6;font-size:17px;padding:9px 18px}
+  .prob-text{font-size:22px;font-weight:600}
+  .parts{display:flex;flex-wrap:wrap;gap:10px}
+  .part{border-radius:16px;padding:10px 14px;flex:1 1 210px;border:3px dashed}
+  .part b{display:block;font-family:'Comic Sans MS','Chalkboard SE',cursive;font-size:17px;margin-bottom:2px}
+  .part.bilo{background:#E8F4FF;border-color:#9CCBF0}
+  .part.vzyali{background:#FFEDE6;border-color:#FFB59A}
+  .part.ostalos{background:#E7FAF2;border-color:#8FDCBF}
+  .part.vopros{background:#F3ECFF;border-color:#C8AEF0}
+  .math{
+    font-family:'Comic Sans MS','Chalkboard SE',cursive;font-size:32px;font-weight:700;
+    color:#2F6DB5;background:#EAF3FF;border-radius:16px;padding:8px 18px;
+    display:inline-block;margin:8px 0;letter-spacing:1px;
+  }
+  .step{border-left:6px solid #FFC94D;padding:8px 14px;margin:14px 0;background:#FFF9EC;border-radius:0 16px 16px 0}
+  .step b{font-family:'Comic Sans MS','Chalkboard SE',cursive;color:#B97F1E;font-size:19px}
+  input.answer{
+    font-size:30px;width:150px;padding:10px;border:3px solid #F3D9A8;border-radius:14px;
+    text-align:center;font-family:'Comic Sans MS','Chalkboard SE',cursive;color:#4A3B2A;background:#fff;
+  }
+  input.answer:focus{outline:3px solid #FFC94D}
+  .unit{font-size:20px;margin-left:8px}
+  .msg{border-radius:16px;padding:12px 16px;margin:12px 0}
+  .msg.ok{background:#E7FAF2;border:3px solid #8FDCBF}
+  .msg.hint{background:#FFF3D6;border:3px solid #FFD98A}
+  .msg.soft{background:#FFEDE6;border:3px solid #FFB59A}
+  .practice{background:#FFF2F8;border-color:#F2B8D0;box-shadow:0 4px 0 #EFCBDD}
+  svg{display:block;max-width:100%;height:auto;margin:6px auto}
+  svg text{font-family:'Comic Sans MS','Chalkboard SE',cursive;fill:#4A3B2A}
+  .legend{font-size:16px;color:#8a7358;text-align:center;margin:6px 0 0}
+  .menu{display:grid;grid-template-columns:repeat(auto-fill,minmax(66px,1fr));gap:12px;margin:8px 0}
+  .pbtn{
+    position:relative;aspect-ratio:1;font-family:'Comic Sans MS','Chalkboard SE',cursive;
+    font-size:26px;border-radius:20px;border:3px solid #F3D9A8;background:#fff;
+    cursor:pointer;box-shadow:0 3px 0 #EEDCB6;color:#4A3B2A;
+  }
+  .pbtn:hover{background:#FFF3D6}
+  .pbtn .star{position:absolute;top:-10px;right:-10px;font-size:22px}
+  .howto ol{margin:6px 0;padding-left:24px}
+  .howto li{margin:6px 0}
+  .two{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+  .two>div{flex:1 1 280px}
+  @media(max-width:520px){
+    .math{font-size:25px}
+    .prob-text{font-size:20px}
+    h1{font-size:26px}
+    body{font-size:18px}
+  }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+/* ============================================================
+   Математика для Нины — 10 текстовых задач с картинками
+   ============================================================ */
+
+/* ---------- Маленькие рисунки (SVG), каждый в клетке 64x64 ---------- */
+function iBucket(x,y){return '<g transform="translate('+x+','+y+')">'+
+  '<path d="M12 22 L52 22 L47 58 L17 58 Z" fill="#8FD3F4" stroke="#3E7CA6" stroke-width="3" stroke-linejoin="round"/>'+
+  '<path d="M17 22 Q32 0 47 22" fill="none" stroke="#8A6D4B" stroke-width="4" stroke-linecap="round"/>'+
+  '<path d="M15 33 L49 33" stroke="#C9EAFB" stroke-width="4" stroke-linecap="round"/></g>';}
+
+function iSun(x,y){
+  var rays='';
+  for(var i=0;i<8;i++){var a=i*Math.PI/4;
+    rays+='<line x1="'+(32+Math.cos(a)*20).toFixed(1)+'" y1="'+(32+Math.sin(a)*20).toFixed(1)+
+          '" x2="'+(32+Math.cos(a)*27).toFixed(1)+'" y2="'+(32+Math.sin(a)*27).toFixed(1)+'"/>';}
+  return '<g transform="translate('+x+','+y+')">'+
+    '<g stroke="#F2A93B" stroke-width="3" stroke-linecap="round">'+rays+'</g>'+
+    '<circle cx="32" cy="32" r="15" fill="#FFD45E" stroke="#F2A93B" stroke-width="3"/>'+
+    '<circle cx="27" cy="29" r="2" fill="#B97F1E"/><circle cx="37" cy="29" r="2" fill="#B97F1E"/>'+
+    '<path d="M27 36 Q32 40 37 36" stroke="#B97F1E" stroke-width="2" fill="none" stroke-linecap="round"/></g>';
+}
+
+function iMushroom(x,y){return '<g transform="translate('+x+','+y+')">'+
+  '<path d="M26 34 h12 l3 22 q-9 4 -18 0 z" fill="#FFF1DC" stroke="#C9A176" stroke-width="3" stroke-linejoin="round"/>'+
+  '<path d="M8 34 Q10 8 32 8 Q54 8 56 34 Q32 43 8 34 Z" fill="#E2725B" stroke="#B04A36" stroke-width="3"/>'+
+  '<circle cx="22" cy="21" r="3.4" fill="#FFF"/><circle cx="38" cy="16" r="3" fill="#FFF"/><circle cx="45" cy="27" r="2.6" fill="#FFF"/></g>';}
+
+function iPeach(x,y){return '<g transform="translate('+x+','+y+')">'+
+  '<path d="M32 14 Q54 12 54 36 Q54 56 32 58 Q10 56 10 36 Q10 12 32 14 Z" fill="#FFB26B" stroke="#E08543" stroke-width="3"/>'+
+  '<path d="M32 15 Q29 36 32 57" stroke="#E08543" stroke-width="2.5" fill="none" opacity=".6"/>'+
+  '<path d="M34 13 Q45 2 53 9 Q45 17 34 13 Z" fill="#7FBF6E" stroke="#5C9A4D" stroke-width="2.5"/></g>';}
+
+function iKiwi(x,y){return '<g transform="translate('+x+','+y+')">'+
+  '<ellipse cx="32" cy="36" rx="22" ry="18" fill="#9C6B3C" stroke="#7A5228" stroke-width="3"/>'+
+  '<ellipse cx="32" cy="36" rx="14" ry="10" fill="#A8C256"/>'+
+  '<ellipse cx="32" cy="36" rx="5" ry="3.6" fill="#E9F1C2"/>'+
+  '<circle cx="24" cy="32" r="1.4" fill="#4A3B2A"/><circle cx="40" cy="32" r="1.4" fill="#4A3B2A"/>'+
+  '<circle cx="24" cy="40" r="1.4" fill="#4A3B2A"/><circle cx="40" cy="40" r="1.4" fill="#4A3B2A"/></g>';}
+
+function iBarrel(x,y){return '<g transform="translate('+x+','+y+')">'+
+  '<path d="M14 10 Q32 4 50 10 Q58 32 50 54 Q32 60 14 54 Q6 32 14 10 Z" fill="#C98B4E" stroke="#8F5B24" stroke-width="3"/>'+
+  '<path d="M10 22 Q32 29 54 22" fill="none" stroke="#8F5B24" stroke-width="3"/>'+
+  '<path d="M10 42 Q32 49 54 42" fill="none" stroke="#8F5B24" stroke-width="3"/>'+
+  '<ellipse cx="32" cy="9" rx="18" ry="5" fill="#E0A866" stroke="#8F5B24" stroke-width="3"/></g>';}
+
+function iPumpkin(x,y){return '<g transform="translate('+x+','+y+')">'+
+  '<ellipse cx="32" cy="38" rx="26" ry="20" fill="#FF9F43" stroke="#D97A1F" stroke-width="3"/>'+
+  '<path d="M32 18 Q23 38 32 58 M32 18 Q41 38 32 58" stroke="#D97A1F" stroke-width="2.5" fill="none" opacity=".7"/>'+
+  '<path d="M32 18 Q15 26 14 40 M32 18 Q49 26 50 40" stroke="#D97A1F" stroke-width="2" fill="none" opacity=".45"/>'+
+  '<path d="M32 19 Q30 8 39 8" stroke="#5C8A3A" stroke-width="5" fill="none" stroke-linecap="round"/></g>';}
+
+function iHeart(x,y){return '<g transform="translate('+x+','+y+')">'+
+  '<path d="M32 54 Q6 34 10 18 Q13 8 24 10 Q30 12 32 18 Q34 12 40 10 Q51 8 54 18 Q58 34 32 54 Z" '+
+  'fill="#FF7B9C" stroke="#E04A73" stroke-width="3"/></g>';}
+
+function iGirl(x,y,dress){return '<g transform="translate('+x+','+y+')">'+
+  '<path d="M15 18 Q30 -8 45 18 L45 26 Q30 18 15 26 Z" fill="#7A4A21"/>'+
+  '<circle cx="30" cy="20" r="13" fill="#FFD9B8" stroke="#E0A878" stroke-width="2.5"/>'+
+  '<circle cx="25" cy="18" r="1.8" fill="#4A3B2A"/><circle cx="35" cy="18" r="1.8" fill="#4A3B2A"/>'+
+  '<path d="M25 25 Q30 29 35 25" stroke="#C97B4A" stroke-width="2" fill="none" stroke-linecap="round"/>'+
+  '<path d="M30 34 L13 64 L47 64 Z" fill="'+dress+'" stroke="#00000022" stroke-width="2" stroke-linejoin="round"/></g>';}
+
+var ITEMS={bucket:iBucket,sun:iSun,mushroom:iMushroom,peach:iPeach,kiwi:iKiwi,barrel:iBarrel,pumpkin:iPumpkin,heart:iHeart};
+
+function cross(x,y){
+  return '<g stroke="#E4572E" stroke-width="5" stroke-linecap="round">'+
+  '<line x1="'+(x+13)+'" y1="'+(y+18)+'" x2="'+(x+51)+'" y2="'+(y+56)+'"/>'+
+  '<line x1="'+(x+51)+'" y1="'+(y+18)+'" x2="'+(x+13)+'" y2="'+(y+56)+'"/></g>';
+}
+
+/* Сетка одинаковых предметов. list: [{type, removed}] */
+function gridSVG(list, opts){
+  opts=opts||{};
+  var cell=opts.cell||72;
+  var perRow=opts.perRow||Math.min(list.length,7);
+  var rows=Math.ceil(list.length/perRow);
+  var top=opts.label?34:0;
+  var w=perRow*cell, h=rows*cell+top;
+  var s='';
+  if(opts.label) s+='<text x="6" y="24" font-size="19" font-weight="700" fill="#B97F1E">'+opts.label+'</text>';
+  list.forEach(function(it,i){
+    var r=Math.floor(i/perRow), c=i%perRow;
+    var x=c*cell+4, y=top+r*cell+4;
+    s+= it.removed ? ('<g opacity=".32">'+ITEMS[it.type](x,y)+'</g>'+cross(x,y)) : ITEMS[it.type](x,y);
+  });
+  return {s:s,w:w,h:h};
+}
+
+function svgWrap(inner,w,h){
+  return '<svg viewBox="0 0 '+w+' '+h+'" xmlns="http://www.w3.org/2000/svg" role="img">'+inner+'</svg>';
+}
+
+/* собрать сетку в готовый svg */
+function gridImg(list,opts){var g=gridSVG(list,opts);return svgWrap(g.s,g.w,g.h);}
+
+/* посчитать предметы: n штук type, из них rem зачёркнуто (первые rem) */
+function makeList(type,n,rem){
+  var a=[];
+  for(var i=0;i<n;i++) a.push({type:type,removed:i<(rem||0)});
+  return a;
+}
+
+/* ---------- Особые картинки для отдельных задач ---------- */
+
+/* Задача 2: Винни-Пух, Кролик и Пятачок ждут поезд + часы */
+function drawP2(){
+  var s='';
+  /* медведь */
+  s+='<g transform="translate(60,46)">'+
+     '<circle cx="14" cy="14" r="10" fill="#B07D4F" stroke="#8A5A2E" stroke-width="3"/>'+
+     '<circle cx="58" cy="14" r="10" fill="#B07D4F" stroke="#8A5A2E" stroke-width="3"/>'+
+     '<circle cx="36" cy="36" r="26" fill="#B07D4F" stroke="#8A5A2E" stroke-width="3"/>'+
+     '<ellipse cx="36" cy="44" rx="11" ry="8" fill="#E8C9A0"/>'+
+     '<circle cx="36" cy="40" r="3" fill="#4A3B2A"/>'+
+     '<circle cx="27" cy="31" r="2.4" fill="#4A3B2A"/><circle cx="45" cy="31" r="2.4" fill="#4A3B2A"/></g>';
+  s+='<text x="96" y="140" text-anchor="middle" font-size="16">Винни-Пух</text>';
+  /* кролик */
+  s+='<g transform="translate(200,30)">'+
+     '<ellipse cx="24" cy="6" rx="7" ry="20" fill="#F5F0E8" stroke="#B8AE9E" stroke-width="3"/>'+
+     '<ellipse cx="48" cy="6" rx="7" ry="20" fill="#F5F0E8" stroke="#B8AE9E" stroke-width="3"/>'+
+     '<ellipse cx="24" cy="8" rx="3" ry="12" fill="#F8C8D4"/>'+
+     '<ellipse cx="48" cy="8" rx="3" ry="12" fill="#F8C8D4"/>'+
+     '<circle cx="36" cy="52" r="25" fill="#F5F0E8" stroke="#B8AE9E" stroke-width="3"/>'+
+     '<circle cx="28" cy="48" r="2.4" fill="#4A3B2A"/><circle cx="44" cy="48" r="2.4" fill="#4A3B2A"/>'+
+     '<path d="M32 56 Q36 60 40 56" stroke="#8a7358" stroke-width="2" fill="none" stroke-linecap="round"/>'+
+     '<ellipse cx="36" cy="54" rx="3.4" ry="2.6" fill="#F8A8BC"/></g>';
+  s+='<text x="236" y="140" text-anchor="middle" font-size="16">Кролик</text>';
+  /* пятачок */
+  s+='<g transform="translate(330,46)">'+
+     '<path d="M16 12 L24 26 L8 24 Z" fill="#F6A5B8" stroke="#D16B85" stroke-width="3" stroke-linejoin="round"/>'+
+     '<path d="M56 12 L48 26 L64 24 Z" fill="#F6A5B8" stroke="#D16B85" stroke-width="3" stroke-linejoin="round"/>'+
+     '<circle cx="36" cy="38" r="25" fill="#F8B9C8" stroke="#D16B85" stroke-width="3"/>'+
+     '<ellipse cx="36" cy="44" rx="9" ry="7" fill="#F6A5B8" stroke="#D16B85" stroke-width="2.5"/>'+
+     '<circle cx="33" cy="44" r="1.6" fill="#8A4A5C"/><circle cx="39" cy="44" r="1.6" fill="#8A4A5C"/>'+
+     '<circle cx="27" cy="32" r="2.4" fill="#4A3B2A"/><circle cx="45" cy="32" r="2.4" fill="#4A3B2A"/></g>';
+  s+='<text x="366" y="140" text-anchor="middle" font-size="16">Пятачок</text>';
+  /* часы на 3 часа */
+  s+='<g transform="translate(480,16)">'+
+     '<circle cx="55" cy="55" r="50" fill="#FFFDF6" stroke="#5AA9E6" stroke-width="5"/>'+
+     '<g stroke="#8a7358" stroke-width="3" stroke-linecap="round">'+
+     '<line x1="55" y1="12" x2="55" y2="20"/><line x1="55" y1="90" x2="55" y2="98"/>'+
+     '<line x1="12" y1="55" x2="20" y2="55"/><line x1="90" y1="55" x2="98" y2="55"/></g>'+
+     '<line x1="55" y1="55" x2="55" y2="24" stroke="#4A3B2A" stroke-width="4" stroke-linecap="round"/>'+
+     '<line x1="55" y1="55" x2="88" y2="55" stroke="#E4572E" stroke-width="4" stroke-linecap="round"/>'+
+     '<circle cx="55" cy="55" r="5" fill="#4A3B2A"/></g>';
+  s+='<text x="535" y="140" text-anchor="middle" font-size="18" font-weight="700" fill="#B97F1E">3 часа</text>';
+  s+='<text x="310" y="185" text-anchor="middle" font-size="20" font-weight="700" fill="#D96C47">Все трое ждали поезд ВМЕСТЕ — одновременно!</text>';
+  return svgWrap(s,620,205);
+}
+
+/* Задача 5: два бочонка мёда */
+function drawP5(){
+  var s='';
+  s+='<g transform="translate(90,30) scale(1.5)">'+iBarrel(0,0)+'</g>';
+  s+='<text x="138" y="150" text-anchor="middle" font-size="22" font-weight="700" fill="#2F6DB5">8 кг</text>';
+  s+='<text x="138" y="176" text-anchor="middle" font-size="16">первый бочонок</text>';
+  s+='<g transform="translate(320,6) scale(2.1)">'+iBarrel(0,0)+'</g>';
+  s+='<text x="387" y="150" text-anchor="middle" font-size="22" font-weight="700" fill="#D96C47">? = 8 + 2</text>';
+  s+='<text x="387" y="176" text-anchor="middle" font-size="16">второй бочонок — БОЛЬШЕ!</text>';
+  s+='<text x="260" y="212" text-anchor="middle" font-size="18" fill="#8a7358">«на 2 кг меньше, чем в другом» — значит, в другом мёда больше</text>';
+  return svgWrap(s,520,230);
+}
+
+/* Задача 7: числовая линейка */
+function drawP7(){
+  var x0=52, unit=50, y=118;
+  var s='<line x1="'+(x0-24)+'" y1="'+y+'" x2="'+(x0+10*unit+24)+'" y2="'+y+'" stroke="#8A6D4B" stroke-width="4" stroke-linecap="round"/>';
+  for(var n=20;n<=30;n++){
+    var x=x0+(n-20)*unit;
+    s+='<line x1="'+x+'" y1="'+(y-8)+'" x2="'+x+'" y2="'+(y+8)+'" stroke="#8A6D4B" stroke-width="3"/>'+
+       '<text x="'+x+'" y="'+(y+34)+'" text-anchor="middle" font-size="17">'+n+'</text>';
+  }
+  /* 24 — исходное число */
+  s+='<circle cx="'+(x0+4*unit)+'" cy="'+(y-30)+'" r="16" fill="#FFF" stroke="#B8AE9E" stroke-width="3" stroke-dasharray="4 3"/>'+
+     '<text x="'+(x0+4*unit)+'" y="'+(y-24)+'" text-anchor="middle" font-size="16" fill="#8a7358">24</text>';
+  /* шаг назад к 23 */
+  s+='<path d="M '+(x0+4*unit-12)+' '+(y-44)+' Q '+(x0+3.5*unit)+' '+(y-72)+' '+(x0+3*unit+12)+' '+(y-44)+'" fill="none" stroke="#E4572E" stroke-width="3.5" stroke-linecap="round"/>'+
+     '<path d="M '+(x0+3*unit+16)+' '+(y-52)+' L '+(x0+3*unit+10)+' '+(y-42)+' L '+(x0+3*unit+22)+' '+(y-42)+' Z" fill="#E4572E"/>'+
+     '<text x="'+(x0+3.5*unit)+'" y="'+(y-78)+'" text-anchor="middle" font-size="16" fill="#E4572E">шаг назад</text>';
+  /* 23 — предыдущее */
+  s+='<circle cx="'+(x0+3*unit)+'" cy="'+(y-30)+'" r="16" fill="#FFD45E" stroke="#F2A93B" stroke-width="3"/>'+
+     '<text x="'+(x0+3*unit)+'" y="'+(y-24)+'" text-anchor="middle" font-size="16" font-weight="700">23</text>';
+  /* прыжок +7 к 30 */
+  var xa=x0+3*unit+16, xb=x0+10*unit-16, xm=(xa+xb)/2;
+  s+='<path d="M '+xa+' '+(y-40)+' Q '+xm+' '+(y-120)+' '+xb+' '+(y-40)+'" fill="none" stroke="#4FBFA0" stroke-width="4" stroke-linecap="round"/>'+
+     '<path d="M '+(xb+2)+' '+(y-52)+' L '+(xb+10)+' '+(y-38)+' L '+(xb-6)+' '+(y-38)+' Z" fill="#4FBFA0"/>'+
+     '<text x="'+xm+'" y="'+(y-108)+'" text-anchor="middle" font-size="20" font-weight="700" fill="#37997E">+7</text>';
+  /* звезда на 30 */
+  s+='<path d="M '+(x0+10*unit)+' '+(y-52)+' l5 12 13 1 -10 9 3 13 -11 -7 -11 7 3 -13 -10 -9 13 -1 Z" fill="#FFD45E" stroke="#F2A93B" stroke-width="2.5" stroke-linejoin="round"/>'+
+     '<text x="'+(x0+10*unit)+'" y="'+(y-62)+'" text-anchor="middle" font-size="18" font-weight="700" fill="#D96C47">30</text>';
+  return svgWrap(s,620,200);
+}
+
+/* Задача 8: 30 кубиков */
+function drawP8(){
+  var s='', cell=40, size=32;
+  for(var i=0;i<30;i++){
+    var r=Math.floor(i/15), c=i%15;
+    var x=c*cell+4, y=r*46+8;
+    var color, stroke;
+    if(i<13){color='#FFC94D';stroke='#E0A42E';}
+    else if(i<21){color='#8FDCBF';stroke='#57B894';}
+    else {color='#EFEAE0';stroke='#C9C2B2';}
+    s+='<rect x="'+x+'" y="'+y+'" width="'+size+'" height="'+size+'" rx="8" fill="'+color+'" stroke="'+stroke+'" stroke-width="3"/>';
+    if(i>=21) s+='<text x="'+(x+size/2)+'" y="'+(y+22)+'" text-anchor="middle" font-size="16" fill="#A79E8C">?</text>';
+  }
+  s+='<text x="4" y="128" font-size="16" fill="#8a7358">13 жёлтых + 8 зелёных = 21, а серых — столько, сколько нужно убрать</text>';
+  return svgWrap(s,600,140);
+}
+
+/* Задача 9: две тыквы */
+function drawP9(){
+  var s='';
+  s+='<g transform="translate(80,36) scale(1.4)">'+iPumpkin(0,0)+'</g>';
+  s+='<text x="125" y="150" text-anchor="middle" font-size="22" font-weight="700" fill="#2F6DB5">8 кг</text>';
+  s+='<text x="125" y="176" text-anchor="middle" font-size="16">лёгкая тыква</text>';
+  s+='<g transform="translate(300,10) scale(2.0)">'+iPumpkin(0,0)+'</g>';
+  s+='<text x="364" y="150" text-anchor="middle" font-size="22" font-weight="700" fill="#D96C47">? = 8 + 2</text>';
+  s+='<text x="364" y="176" text-anchor="middle" font-size="16">тяжёлая тыква</text>';
+  s+='<text x="245" y="212" text-anchor="middle" font-size="18" fill="#8a7358">«легче на 2 кг» — значит, вторая тяжелее на 2 кг</text>';
+  return svgWrap(s,490,230);
+}
+
+/* Задача 10: Аня и Вика с сердечками */
+function drawP10(){
+  var s='';
+  /* Аня */
+  s+=iGirl(70,10,'#7EC8E3');
+  s+='<text x="100" y="100" text-anchor="middle" font-size="19" font-weight="700" fill="#2F6DB5">Аня — ?</text>';
+  var g1=gridSVG(makeList('heart',7,0),{perRow:7,cell:44});
+  s+='<g transform="translate(10,110)">'+g1.s+'</g>';
+  /* Вика */
+  s+=iGirl(370,10,'#C3A6FF');
+  s+='<text x="400" y="100" text-anchor="middle" font-size="19" font-weight="700" fill="#8A5CC9">Вика = Аня + 1</text>';
+  var g2=gridSVG(makeList('heart',7,0),{perRow:7,cell:44});
+  s+='<g transform="translate(310,110)">'+g2.s+'</g>';
+  s+='<g transform="translate(310+7*44,110+4)"><g opacity=".9">'+iHeart(0,0)+'</g>'+
+     '<text x="30" y="-4" font-size="15" fill="#E04A73" text-anchor="middle">+1</text></g>';
+  s+='<text x="310" y="205" text-anchor="middle" font-size="18" fill="#8a7358">Сердечки — годики. Вместе у девочек 15 годиков.</text>';
+  return svgWrap(s,620,215);
+}
+
+/* ---------- 10 задач ---------- */
+var PROBLEMS=[
+{
+  id:1,
+  text:'Во время летних каникул Юля гостила у бабушки три недели, а её брат Юра — на три дня меньше. Сколько дней гостил у бабушки Юра?',
+  parts:[
+    {c:'bilo',l:'🧺 Дано',t:'Юля гостила 3 недели.'},
+    {c:'vzyali',l:'➖ Разница',t:'Юра гостил на 3 дня меньше.'},
+    {c:'vopros',l:'❓ Что узнать',t:'Сколько дней гостил Юра?'}
+  ],
+  draw:function(){return gridImg(makeList('sun',21,3),{perRow:7,label:'3 недели = 21 солнышко = 21 день'});},
+  legend:'Каждое солнышко — один день. Зачёркнутые 3 — на столько дней Юра гостил меньше.',
+  drawPrompt:'Нарисуй в тетради 3 ряда по 7 солнышек и зачеркни 3 последних!',
+  steps:[
+    {t:'Шаг 1. Переведём недели в дни',m:'3 × 7 = 21',e:'В одной неделе 7 дней. Значит, 3 недели — это 3 раза по 7, то есть 21 день.'},
+    {t:'Шаг 2. Уберём 3 дня',m:'21 − 3 = 18',e:'«На 3 дня меньше» — значит, вычитаем. Юра гостил 18 дней.'}
+  ],
+  answer:18,unit:'дней',
+  hint:'Вспомни: в одной неделе 7 дней. Сначала узнай, сколько дней гостила Юля.',
+  explain:'3 недели — это 21 день, а 21 − 3 = 18. Юра гостил у бабушки 18 дней.',
+  practice:'Оля читала интересную книгу 2 недели, а её брат Миша читал её на 5 дней меньше. Сколько дней читал книгу Миша?'
+},
+{
+  id:2,
+  text:'Винни-Пух, Кролик и Пятачок ожидали поезд три часа. Сколько часов ожидал поезд каждый из них?',
+  parts:[
+    {c:'bilo',l:'🧺 Дано',t:'Трое друзей ждали поезд.'},
+    {c:'ostalos',l:'⏰ Время',t:'Ожидание длилось 3 часа.'},
+    {c:'vopros',l:'❓ Что узнать',t:'Сколько часов ждал каждый?'}
+  ],
+  draw:drawP2,
+  legend:'Это задача-хитрость! Друзья ждали все вместе, в одно и то же время.',
+  drawPrompt:'Нарисуй трёх друзей рядом и большие часы!',
+  steps:[
+    {t:'Шаг 1. Подумай: они ждали по очереди или вместе?',m:'',e:'Винни-Пух, Кролик и Пятачок стояли на платформе одновременно. Время шло для всех одинаково!'},
+    {t:'Шаг 2. Значит...',m:'каждый ждал 3 часа',e:'Если трое вместе ждали 3 часа, то и каждый из них ждал те же самые 3 часа. Делить тут ничего не нужно!'}
+  ],
+  answer:3,unit:'часа',
+  hint:'Они ждали поезд все вместе, одновременно — время у них было общее!',
+  explain:'Друзья ждали вместе, поэтому каждый ждал все 3 часа. Хитрая задача!',
+  practice:'Нина, мама и папа вместе смотрели мультфильм 2 часа. Сколько часов смотрел мультфильм каждый из них?'
+},
+{
+  id:3,
+  text:'В бочке было 14 вёдер воды. На поливку грядки моркови из бочки взяли 6 вёдер воды. На сколько вёдер воды меньше вылили из бочки, чем там осталось?',
+  parts:[
+    {c:'bilo',l:'🛢️ Было',t:'В бочке 14 вёдер воды.'},
+    {c:'vzyali',l:'➖ Взяли',t:'6 вёдер — полили морковку.'},
+    {c:'ostalos',l:'💧 Осталось',t:'Неизвестно — найдём в шаге 1!'},
+    {c:'vopros',l:'❓ Что узнать',t:'На сколько вылили меньше, чем осталось?'}
+  ],
+  draw:function(){return gridImg(makeList('bucket',14,6),{perRow:7,label:'14 вёдер, 6 зачёркнуты — их унесли'});},
+  legend:'Зачёркнутые вёдра — вода, которую унесли на грядку.',
+  drawPrompt:'Нарисуй в тетради 14 вёдер и зачеркни 6!',
+  steps:[
+    {t:'Шаг 1. Сколько вёдер осталось?',m:'14 − 6 = 8',e:'Было 14 вёдер, унесли 6 — в бочке осталось 8 вёдер.'},
+    {t:'Шаг 2. Сравним: вылили или осталось?',m:'8 − 6 = 2',e:'Спрашивают: на сколько вылили (6) меньше, чем осталось (8)? Из большего вычитаем меньшее: 8 − 6 = 2.'}
+  ],
+  answer:2,unit:'вёдра',
+  hint:'Сначала узнай, сколько вёдер осталось в бочке: 14 − 6.',
+  explain:'Осталось 8 вёдер, а вылили 6. 8 − 6 = 2 — вылили на 2 ведра меньше, чем осталось.',
+  practice:'В аквариуме было 12 рыбок. 5 рыбок пересадили в другой аквариум. На сколько меньше рыбок пересадили, чем осталось?'
+},
+{
+  id:4,
+  text:'В вазе лежали персики и киви. Ребята съели 5 персиков, и в вазе осталось 3 персика и 7 киви. Сколько всего фруктов было в вазе?',
+  parts:[
+    {c:'vzyali',l:'🍑 Съели',t:'5 персиков.'},
+    {c:'ostalos',l:'🧺 Осталось',t:'3 персика и 7 киви.'},
+    {c:'vopros',l:'❓ Что узнать',t:'Сколько всего фруктов БЫЛО?'}
+  ],
+  draw:function(){
+    return '<div class="two"><div>'+gridImg(makeList('peach',8,5),{perRow:4,label:'Персики: 5 съели, 3 остались'})+'</div>'+
+           '<div>'+gridImg(makeList('kiwi',7,0),{perRow:4,label:'Киви: все 7 на месте'})+'</div></div>';
+  },
+  legend:'Зачёркнутые персики — те, что съели. Их тоже нужно посчитать: они же были в вазе!',
+  drawPrompt:'Нарисуй вазу с персиками и киви — сколько фруктов получилось?',
+  steps:[
+    {t:'Шаг 1. Сколько персиков было?',m:'5 + 3 = 8',e:'Съели 5 персиков, и ещё 3 остались — значит, было 5 + 3 = 8 персиков.'},
+    {t:'Шаг 2. Сложим все фрукты',m:'8 + 7 = 15',e:'8 персиков и 7 киви — всего в вазе было 15 фруктов.'}
+  ],
+  answer:15,unit:'фруктов',
+  hint:'Сначала узнай, сколько персиков было: съеденные плюс оставшиеся.',
+  explain:'Персиков было 5 + 3 = 8, а всего фруктов 8 + 7 = 15.',
+  practice:'В коробке лежали цветные карандаши и фломастеры. Нина взяла 4 карандаша, и в коробке осталось 6 карандашей и 5 фломастеров. Сколько всего предметов было в коробке?'
+},
+{
+  id:5,
+  text:'В одном бочонке 8 кг мёда, это на 2 кг мёда меньше, чем в другом бочонке. Сколько килограммов мёда в двух бочонках?',
+  parts:[
+    {c:'bilo',l:'🍯 Дано',t:'В первом бочонке 8 кг мёда.'},
+    {c:'vzyali',l:'⚖️ Сравнение',t:'Это на 2 кг МЕНЬШЕ, чем во втором.'},
+    {c:'vopros',l:'❓ Что узнать',t:'Сколько мёда в двух бочонках вместе?'}
+  ],
+  draw:drawP5,
+  legend:'Самое важное слово здесь — «меньше, чем в другом». Значит, в другом больше!',
+  drawPrompt:'Нарисуй маленький и большой бочонки с мёдом!',
+  steps:[
+    {t:'Шаг 1. Сколько мёда во втором бочонке?',m:'8 + 2 = 10',e:'В первом 8 кг, и это на 2 кг меньше, чем во втором. Значит, во втором на 2 кг БОЛЬШЕ: 8 + 2 = 10 кг.'},
+    {t:'Шаг 2. Сложим оба бочонка',m:'8 + 10 = 18',e:'В двух бочонках 8 + 10 = 18 кг мёда.'}
+  ],
+  answer:18,unit:'кг',
+  hint:'Если в первом бочонке меньше, чем во втором, — значит, во втором больше. Прибавь!',
+  explain:'Во втором бочонке 8 + 2 = 10 кг, а в двух вместе 8 + 10 = 18 кг мёда.',
+  practice:'В одной банке 5 кг варенья, это на 3 кг меньше, чем в другой банке. Сколько килограммов варенья в двух банках?'
+},
+{
+  id:6,
+  text:'Маша нашла два десятка боровиков, а Даша — на два боровика меньше. Сколько всего грибов собрали девочки?',
+  parts:[
+    {c:'bilo',l:'🍄 Маша',t:'Два десятка боровиков — это 20.'},
+    {c:'vzyali',l:'➖ Даша',t:'На 2 боровика меньше, чем Маша.'},
+    {c:'vopros',l:'❓ Что узнать',t:'Сколько грибов у девочек вместе?'}
+  ],
+  draw:function(){
+    return '<div class="two"><div>'+gridImg(makeList('mushroom',20,0),{perRow:10,cell:56,label:'Маша: 2 десятка = 20'})+'</div>'+
+           '<div>'+gridImg(makeList('mushroom',18,0),{perRow:10,cell:56,label:'Даша: 20 − 2 = 18'})+'</div></div>';
+  },
+  legend:'Десяток — это 10. Два десятка — 20 грибов!',
+  drawPrompt:'Нарисуй две корзинки: у Маши 20 грибов, у Даши на 2 меньше.',
+  steps:[
+    {t:'Шаг 1. Грибы Маши',m:'2 десятка = 20',e:'Один десяток — это 10. Два десятка — 10 + 10 = 20 боровиков.'},
+    {t:'Шаг 2. Грибы Даши',m:'20 − 2 = 18',e:'Даша нашла на 2 гриба меньше, чем Маша: 20 − 2 = 18.'},
+    {t:'Шаг 3. Сложим вместе',m:'20 + 18 = 38',e:'Всего девочки собрали 20 + 18 = 38 грибов.'}
+  ],
+  answer:38,unit:'грибов',
+  hint:'Два десятка — это 20. Теперь узнай, сколько грибов у Даши.',
+  explain:'Маша нашла 20, Даша 20 − 2 = 18, а вместе 20 + 18 = 38 грибов.',
+  practice:'Коля собрал три десятка орехов, а Петя — на 5 орехов меньше. Сколько всего орехов собрали мальчики?'
+},
+{
+  id:7,
+  text:'Возьми число, предыдущее числу 24, и увеличь его на 7. Какое число получится?',
+  parts:[
+    {c:'bilo',l:'🔢 Дано',t:'Число 24 — но нужно предыдущее!'},
+    {c:'ostalos',l:'🔙 Предыдущее',t:'То, что называем перед 24 при счёте.'},
+    {c:'vopros',l:'❓ Что узнать',t:'Что получится, если прибавить 7?'}
+  ],
+  draw:drawP7,
+  legend:'Предыдущее число — сосед слева на линейке. У 24 это 23!',
+  drawPrompt:'Нарисуй линейку от 20 до 30 и отметь соседей числа 24!',
+  steps:[
+    {t:'Шаг 1. Найди предыдущее число',m:'24 − 1 = 23',e:'Когда считаем: …22, 23, 24… — перед числом 24 стоит 23. Это и есть предыдущее.'},
+    {t:'Шаг 2. Увеличим на 7',m:'23 + 7 = 30',e:'«Увеличить на 7» — значит прибавить 7. Получилось 30.'}
+  ],
+  answer:30,unit:'',
+  hint:'Предыдущее — это число, которое называют прямо перед 24, когда считаем по порядку.',
+  explain:'Предыдущее число 24 — это 23, а 23 + 7 = 30.',
+  practice:'Возьми число, следующее за числом 19, и уменьши его на 5. Какое число получится?'
+},
+{
+  id:8,
+  text:'На сколько нужно уменьшить число 30, чтобы получить сумму чисел 13 и 8?',
+  parts:[
+    {c:'bilo',l:'🔢 Было',t:'Число 30.'},
+    {c:'ostalos',l:'🎯 Стало',t:'Сумма чисел 13 и 8.'},
+    {c:'vopros',l:'❓ Что узнать',t:'На сколько уменьшили 30?'}
+  ],
+  draw:drawP8,
+  legend:'30 кубиков: 13 жёлтых и 8 зелёных — это сумма. Серые кубики — лишние, их убираем.',
+  drawPrompt:'Нарисуй 30 квадратиков, раскрась 13 жёлтым и 8 зелёным!',
+  steps:[
+    {t:'Шаг 1. Найди сумму',m:'13 + 8 = 21',e:'Сначала узнаем, какое число хотим получить: сумма 13 и 8 — это 21.'},
+    {t:'Шаг 2. На сколько уменьшили?',m:'30 − 21 = 9',e:'Было 30, стало 21. Разница: 30 − 21 = 9. Значит, уменьшить нужно на 9.'}
+  ],
+  answer:9,unit:'',
+  hint:'Сначала найди сумму чисел 13 и 8, а потом сравни её с 30.',
+  explain:'Сумма 13 и 8 равна 21, а 30 − 21 = 9. Уменьшить нужно на 9.',
+  practice:'На сколько нужно уменьшить число 40, чтобы получить сумму чисел 15 и 7?'
+},
+{
+  id:9,
+  text:'Одна тыква легче другой на 2 кг и весит 8 килограммов. Сколько весят обе тыквы?',
+  parts:[
+    {c:'bilo',l:'🎃 Дано',t:'Лёгкая тыква — 8 кг.'},
+    {c:'vzyali',l:'⚖️ Сравнение',t:'Она легче другой на 2 кг.'},
+    {c:'vopros',l:'❓ Что узнать',t:'Сколько весят обе тыквы вместе?'}
+  ],
+  draw:drawP9,
+  legend:'«Легче на 2 кг» — значит, другая тыква тяжелее на те же 2 кг!',
+  drawPrompt:'Нарисуй маленькую тыкву (8 кг) и большую (на 2 кг больше)!',
+  steps:[
+    {t:'Шаг 1. Вес тяжёлой тыквы',m:'8 + 2 = 10',e:'Лёгкая тыква весит 8 кг и она легче на 2 кг. Значит, тяжёлая весит 8 + 2 = 10 кг.'},
+    {t:'Шаг 2. Обе тыквы вместе',m:'8 + 10 = 18',e:'Складываем вес обеих: 8 + 10 = 18 кг.'}
+  ],
+  answer:18,unit:'кг',
+  hint:'«Легче на 2 кг» — значит, вторая тыква тяжелее на 2 кг. Прибавь!',
+  explain:'Тяжёлая тыква — 8 + 2 = 10 кг, а обе вместе — 8 + 10 = 18 кг.',
+  practice:'Один арбуз тяжелее другого на 3 кг и весит 9 килограммов. Сколько весят оба арбуза?'
+},
+{
+  id:10,
+  text:'Аня на 1 год младше Вики. Обеим девочкам вместе 15 лет. Сколько лет Ане?',
+  parts:[
+    {c:'bilo',l:'👧 Дано',t:'Аня младше Вики на 1 год.'},
+    {c:'ostalos',l:'➕ Вместе',t:'Им вдвоём 15 лет.'},
+    {c:'vopros',l:'❓ Что узнать',t:'Сколько лет Ане?'}
+  ],
+  draw:drawP10,
+  legend:'Если убрать 1 «лишний» годик Вики, годиков станет поровну!',
+  drawPrompt:'Нарисуй двух девочек и сердечки-годики: у Вики на 1 больше.',
+  steps:[
+    {t:'Шаг 1. Уберём «лишний» год Вики',m:'15 − 1 = 14',e:'Вика старше на 1 год. Если убрать этот годик, девочкам станет поровну — 14 лет на двоих.'},
+    {t:'Шаг 2. Разделим поровну',m:'14 ÷ 2 = 7',e:'14 пополам — это 7. Столько лет младшей, то есть Ане.'},
+    {t:'Шаг 3. Проверим!',m:'7 + 8 = 15 ✓',e:'Ане 7 лет, Вике на год больше — 8. Вместе 7 + 8 = 15. Всё сходится!'}
+  ],
+  answer:7,unit:'лет',
+  hint:'Убери 1 «лишний» годик Вики из 15, а потом раздели оставшееся поровну.',
+  explain:'15 − 1 = 14, а 14 пополам — 7. Ане 7 лет (а Вике 8).',
+  practice:'Петя на 2 года старше Коли. Вместе мальчикам 12 лет. Сколько лет Коле?'
+}
+];
+
+/* ---------- Логика сайта ---------- */
+var app=document.getElementById('app');
+var stars=[];
+try{stars=JSON.parse(localStorage.getItem('ninaMathStars')||'[]');}catch(e){stars=[];}
+var cur=null, shownSteps=0, tries=0;
+
+var PRAISES=[
+  'Ты настоящий математик! 🌟',
+  'У тебя отлично получается рассуждать! 🎨',
+  'Так держать, умница! 💪',
+  'Ты разобрала задачу как настоящий учёный! 🚀'
+];
+function praise(){return PRAISES[Math.floor(Math.random()*PRAISES.length)];}
+
+function home(){
+  cur=null;
+  var btns=PROBLEMS.map(function(p){
+    return '<button class="pbtn" onclick="openP('+p.id+')">'+p.id+
+      (stars.indexOf(p.id)>=0?'<span class="star">⭐</span>':'')+'</button>';
+  }).join('');
+  app.innerHTML='<div class="wrap">'+
+    '<h1>🌷 Математика для Нины</h1>'+
+    '<div class="card"><p>Привет, Нина! Здесь мы учимся решать задачи как художники: '+
+    '<b>читаем, рисуем и рассуждаем по шагам</b>. Выбери любую задачу:</p></div>'+
+    '<div class="menu">'+btns+'</div>'+
+    '<div class="card howto"><h2>🎨 Главный секрет решения задач</h2><ol>'+
+    '<li>Прочитай задачу <b>два раза</b>, не торопись.</li>'+
+    '<li>Найди, что дано: что <b>было</b>, что <b>взяли</b> или <b>добавили</b>, что <b>осталось</b>.</li>'+
+    '<li><b>Нарисуй</b> картинку — предметы или кружочки. Рисунок всегда подсказывает!</li>'+
+    '<li>Решай <b>маленькими шагами</b> и в конце проверь себя.</li>'+
+    '</ol></div>'+
+  '</div>';
+  window.scrollTo(0,0);
+}
+
+function openP(id){
+  cur=PROBLEMS.filter(function(p){return p.id===id;})[0];
+  shownSteps=0; tries=0;
+  var parts=cur.parts.map(function(pt){
+    return '<div class="part '+pt.c+'"><b>'+pt.l+'</b>'+pt.t+'</div>';
+  }).join('');
+  app.innerHTML='<div class="wrap">'+
+    '<button class="btn ghost" onclick="home()">← Все задачи</button>'+
+    '<h1>Задача '+cur.id+'</h1>'+
+    '<div class="card"><p class="prob-text">'+cur.text+'</p></div>'+
+    '<div class="card"><h2>🧩 Разберём по частям</h2><div class="parts">'+parts+'</div></div>'+
+    '<div class="card"><h2>🖍️ Картинка-подсказка</h2>'+cur.draw()+
+      '<p class="legend">'+cur.legend+'</p>'+
+      '<p class="legend">✏️ <b>'+cur.drawPrompt+'</b></p></div>'+
+    '<div class="card"><h2>💪 Попробовать самой</h2>'+
+      '<div id="answerZone">'+
+        '<p>Впиши ответ, Нина, и нажми «Проверить»:</p>'+
+        '<input class="answer" id="ans" type="number" inputmode="numeric" placeholder="?">'+
+        (cur.unit?'<span class="unit">'+cur.unit+'</span>':'')+
+        '<br><button class="btn mint" onclick="checkAnswer()">Проверить ✔</button>'+
+      '</div>'+
+      '<div id="feedback"></div>'+
+    '</div>'+
+    '<div class="card"><h2>👣 Решение по шагам</h2>'+
+      '<p>Если трудно — подсмотри решение. Шаги открываются по одному:</p>'+
+      '<div id="steps"></div>'+
+      '<button class="btn sky" id="stepBtn" onclick="nextStep()">Показать шаг 1</button>'+
+    '</div>'+
+    '<div id="practiceZone"></div>'+
+  '</div>';
+  window.scrollTo(0,0);
+}
+
+function nextStep(){
+  if(!cur||shownSteps>=cur.steps.length) return;
+  var s=cur.steps[shownSteps]; shownSteps++;
+  document.getElementById('steps').insertAdjacentHTML('beforeend',
+    '<div class="step"><b>'+s.t+'</b>'+
+    (s.m?'<div class="math">'+s.m+'</div>':'')+
+    '<div>'+s.e+'</div></div>');
+  var btn=document.getElementById('stepBtn');
+  if(shownSteps<cur.steps.length){
+    btn.textContent='Показать шаг '+(shownSteps+1);
+  }else{
+    btn.style.display='none';
+    document.getElementById('steps').insertAdjacentHTML('beforeend',
+      '<div class="step" style="border-color:#8FDCBF;background:#F0FCF6"><b>✅ Ответ:</b> '+
+      '<span class="math" style="background:#E7FAF2;color:#2E8B6E">'+cur.answer+(cur.unit?' '+cur.unit:'')+'</span></div>');
+    showPractice();
+  }
+}
+
+function showPractice(){
+  var zone=document.getElementById('practiceZone');
+  if(!zone||zone.innerHTML) return;
+  zone.innerHTML='<div class="card practice"><h2>🌟 А теперь — твоя задача!</h2>'+
+    '<p class="prob-text">'+cur.practice+'</p>'+
+    '<p>Реши её в своей тетради: нарисуй картинку и запиши шаги, как мы учились. '+
+    'Ответ здесь специально не написан — покажи решение маме или папе! 🎨</p></div>';
+  zone.scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+function checkAnswer(){
+  var inp=document.getElementById('ans');
+  var v=(inp.value||'').toString().trim();
+  var fb=document.getElementById('feedback');
+  if(v===''){fb.innerHTML='<div class="msg hint">Сначала напиши число в окошко 🙂</div>';return;}
+  if(Number(v)===cur.answer){
+    if(stars.indexOf(cur.id)<0){
+      stars.push(cur.id);
+      try{localStorage.setItem('ninaMathStars',JSON.stringify(stars));}catch(e){}
+    }
+    document.getElementById('answerZone').style.display='none';
+    fb.innerHTML='<div class="msg ok">🎉 <b>Молодец, Нина!</b> '+praise()+'<br>'+cur.explain+'</div>';
+    while(shownSteps<cur.steps.length) nextStep();
+  }else{
+    tries++;
+    if(tries===1){
+      fb.innerHTML='<div class="msg hint">🤔 Почти получилось! Намёк: <b>'+cur.hint+'</b><br>Попробуй ещё раз — у тебя выйдет!</div>';
+      inp.value=''; inp.focus();
+    }else{
+      fb.innerHTML='<div class="msg soft">💛 Ничего страшного — ошибаться не страшно, так учатся! Давай посмотрим решение вместе, шаг за шагом:</div>';
+      document.getElementById('answerZone').style.display='none';
+      while(shownSteps<cur.steps.length) nextStep();
+    }
+  }
+}
+
+home();
+</script>
+</body>
+</html>
