@@ -74,6 +74,14 @@
   .pbtn:hover{background:#FFF3D6}
   .pbtn .star{position:absolute;top:-10px;right:-10px;font-size:22px}
   .pbtn .medal{position:absolute;bottom:-10px;right:-10px;font-size:20px}
+  .lprints{display:flex;flex-wrap:wrap;gap:10px}
+  .lprint{
+    font-family:'Comic Sans MS','Chalkboard SE',cursive;font-size:17px;cursor:pointer;
+    background:#fff;color:#8A5CC9;border:3px solid #D9C6F2;border-radius:999px;
+    padding:9px 18px;box-shadow:0 3px 0 #E4D6F5;
+  }
+  .lprint:hover{background:#F6F0FF}
+  .lprint:active{transform:translateY(2px);box-shadow:0 1px 0 #E4D6F5}
   .howto ol{margin:6px 0;padding-left:24px}
   .howto li{margin:6px 0}
   .two{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
@@ -778,12 +786,18 @@ function home(){
       (stars.indexOf(p.id)>=0?'<span class="star">⭐</span>':'')+
       (trained.indexOf(p.id)>=0?'<span class="medal">🏅</span>':'')+'</button>';
   }).join('');
+  var prints=PROBLEMS.map(function(p){
+    return '<button class="lprint" onclick="printLesson('+p.id+')">🖨️ Урок '+p.id+'</button>';
+  }).join('');
   app.innerHTML='<div class="wrap">'+
     '<h1>🌷 Математика для Нины</h1>'+
     '<div class="card"><p>Привет, Нина! Здесь мы учимся решать задачи как художники: '+
     '<b>читаем, рисуем и рассуждаем по шагам</b>. Выбери любую задачу:</p>'+
     '<p>⭐ — задача решена &nbsp;·&nbsp; 🏅 — тренировка пройдена</p></div>'+
     '<div class="menu">'+btns+'</div>'+
+    '<div class="card"><h2>🖨️ Распечатать урок</h2>'+
+    '<p>Каждая кнопка печатает <b>один урок</b>: задача + 3 похожих упражнения + место для рисунков:</p>'+
+    '<div class="lprints">'+prints+'</div></div>'+
     '<div class="card howto"><h2>🎨 Главный секрет решения задач</h2><ol>'+
     '<li>Прочитай задачу <b>два раза</b>, не торопись.</li>'+
     '<li>Найди, что дано: что <b>было</b>, что <b>взяли</b> или <b>добавили</b>, что <b>осталось</b>.</li>'+
@@ -794,17 +808,31 @@ function home(){
   window.scrollTo(0,0);
 }
 
+/* генерируем 3 похожих упражнения с разными текстами */
+function makeExercises(id){
+  var ex=[], guard=0;
+  while(ex.length<3 && guard<40){
+    guard++;
+    var e=GEN[id]();
+    if(!ex.some(function(x){return x.text===e.text;})) ex.push(e);
+  }
+  return ex;
+}
+
+/* печать одного урока прямо с главной страницы */
+function printLesson(id){
+  var saved=cur;
+  cur=PROBLEMS.filter(function(p){return p.id===id;})[0];
+  cur.exercises=makeExercises(id);
+  buildPrint();
+  cur=saved;
+  window.print();
+}
+
 function openP(id){
   cur=PROBLEMS.filter(function(p){return p.id===id;})[0];
   shownSteps=0; tries=0;
-  /* генерируем 3 похожих упражнения с разными текстами */
-  cur.exercises=[];
-  var guard=0;
-  while(cur.exercises.length<3 && guard<40){
-    guard++;
-    var e=GEN[id]();
-    if(!cur.exercises.some(function(x){return x.text===e.text;})) cur.exercises.push(e);
-  }
+  cur.exercises=makeExercises(id);
   var parts=cur.parts.map(function(pt){
     return '<div class="part '+pt.c+'"><b>'+pt.l+'</b>'+pt.t+'</div>';
   }).join('');
