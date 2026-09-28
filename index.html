@@ -226,8 +226,64 @@ function iBall(x,y){return '<g transform="translate('+x+','+y+')">'+
   '<path d="M32 24 L42 31 L38 43 L26 43 L22 31 Z" fill="#4A4A4A"/>'+
   '<path d="M32 24 L32 14 M42 31 L51 27 M38 43 L44 51 M26 43 L20 51 M22 31 L13 27" stroke="#8A8A8A" stroke-width="2.5"/></g>';}
 
+/* ласточка */
+function iBird(x,y){return '<g transform="translate('+x+','+y+')">'+
+  '<path d="M14 44 Q30 16 50 30 Q58 36 50 44 Q30 58 14 44 Z" fill="#3E5C76" stroke="#2B4459" stroke-width="3"/>'+
+  '<path d="M16 46 L4 54 M16 42 L5 36" stroke="#2B4459" stroke-width="4" stroke-linecap="round"/>'+
+  '<circle cx="47" cy="29" r="9" fill="#3E5C76" stroke="#2B4459" stroke-width="3"/>'+
+  '<path d="M55 29 L63 31 L55 34 Z" fill="#F2A93B"/>'+
+  '<circle cx="49" cy="27" r="1.8" fill="#FFF"/>'+
+  '<path d="M28 40 Q36 32 45 37 Q37 46 28 40 Z" fill="#F5F0E8"/></g>';}
+
+/* мальчик */
+function iBoy(x,y){return '<g transform="translate('+x+','+y+')">'+
+  '<circle cx="30" cy="20" r="13" fill="#FFD9B8" stroke="#E0A878" stroke-width="2.5"/>'+
+  '<path d="M17 17 Q30 2 43 17 Q30 9 17 17 Z" fill="#5A3A1A"/>'+
+  '<circle cx="25" cy="19" r="1.8" fill="#4A3B2A"/><circle cx="35" cy="19" r="1.8" fill="#4A3B2A"/>'+
+  '<path d="M25 26 Q30 30 35 26" stroke="#C97B4A" stroke-width="2" fill="none" stroke-linecap="round"/>'+
+  '<rect x="17" y="34" width="26" height="20" rx="7" fill="#5AA9E6" stroke="#3E7CA6" stroke-width="2.5"/>'+
+  '<rect x="20" y="52" width="20" height="12" rx="5" fill="#8A6D4B"/></g>';}
+
+/* заяц (беляк — белый, русак — коричневый) */
+function iRabbit(x,y,fill,stroke){fill=fill||'#B07D4F';stroke=stroke||'#8A5A2E';
+  return '<g transform="translate('+x+','+y+')">'+
+  '<ellipse cx="24" cy="12" rx="5" ry="13" fill="'+fill+'" stroke="'+stroke+'" stroke-width="2.5"/>'+
+  '<ellipse cx="38" cy="12" rx="5" ry="13" fill="'+fill+'" stroke="'+stroke+'" stroke-width="2.5"/>'+
+  '<circle cx="31" cy="33" r="12" fill="'+fill+'" stroke="'+stroke+'" stroke-width="2.5"/>'+
+  '<ellipse cx="31" cy="52" rx="14" ry="10" fill="'+fill+'" stroke="'+stroke+'" stroke-width="2.5"/>'+
+  '<circle cx="27" cy="31" r="1.8" fill="#4A3B2A"/><circle cx="35" cy="31" r="1.8" fill="#4A3B2A"/>'+
+  '<ellipse cx="31" cy="37" rx="2.6" ry="2" fill="#F8A8BC"/></g>';}
+
+/* шишка (сосновая — коричневая, еловая — зелёная) */
+function iPinecone(x,y,fill,stroke){fill=fill||'#B07D4F';stroke=stroke||'#8A5A2E';
+  return '<g transform="translate('+x+','+y+')">'+
+  '<ellipse cx="32" cy="36" rx="17" ry="22" fill="'+fill+'" stroke="'+stroke+'" stroke-width="3"/>'+
+  '<path d="M20 27 Q32 33 44 27 M18 37 Q32 43 46 37 M20 47 Q32 53 44 47" stroke="'+stroke+'" stroke-width="2.5" fill="none"/>'+
+  '<path d="M32 15 Q32 8 37 6" stroke="#5C8A3A" stroke-width="4" fill="none" stroke-linecap="round"/></g>';}
+
+/* кит */
+function iWhale(x,y,fill,stroke){fill=fill||'#5AA9E6';stroke=stroke||'#3E7CA6';
+  return '<g transform="translate('+x+','+y+')">'+
+  '<path d="M6 40 Q10 18 40 18 Q62 18 62 34 Q62 44 50 46 L20 46 Q8 46 6 40 Z" fill="'+fill+'" stroke="'+stroke+'" stroke-width="3"/>'+
+  '<path d="M60 32 L74 24 L70 34 L74 44 L60 38 Z" fill="'+fill+'" stroke="'+stroke+'" stroke-width="3" stroke-linejoin="round"/>'+
+  '<circle cx="18" cy="30" r="2.6" fill="#2B2B2B"/>'+
+  '<path d="M12 38 Q24 42 36 40" stroke="'+stroke+'" stroke-width="2" fill="none" stroke-linecap="round"/>'+
+  '<path d="M28 15 Q26 7 22 5 M33 14 Q33 5 37 3 M30.5 14 Q30 8 30 4" stroke="#8FD3F4" stroke-width="3" fill="none" stroke-linecap="round"/></g>';}
+
+/* бобр */
+function iBeaver(x,y){return '<g transform="translate('+x+','+y+')">'+
+  '<ellipse cx="12" cy="50" rx="12" ry="7" fill="#8A6D4B" stroke="#6B5233" stroke-width="3"/>'+
+  '<path d="M4 48 L20 52 M6 45 L18 55 M12 44 L12 56" stroke="#6B5233" stroke-width="1.8"/>'+
+  '<ellipse cx="38" cy="42" rx="20" ry="16" fill="#A9713B" stroke="#7A5228" stroke-width="3"/>'+
+  '<circle cx="50" cy="28" r="11" fill="#A9713B" stroke="#7A5228" stroke-width="3"/>'+
+  '<circle cx="46" cy="17" r="4" fill="#A9713B" stroke="#7A5228" stroke-width="2"/>'+
+  '<circle cx="52" cy="26" r="2" fill="#2B2B2B"/>'+
+  '<ellipse cx="58" cy="32" rx="4" ry="3" fill="#7A5228"/>'+
+  '<rect x="52" y="36" width="4.5" height="7" rx="1.5" fill="#FFF" stroke="#C9C2B2"/></g>';}
+
 var ITEMS={bucket:iBucket,sun:iSun,mushroom:iMushroom,peach:iPeach,kiwi:iKiwi,barrel:iBarrel,pumpkin:iPumpkin,heart:iHeart,
-  book:iBook,chick:iChick,flour:iFlour,juice:iJuice,plum:iPlum,ball:iBall};
+  book:iBook,chick:iChick,flour:iFlour,juice:iJuice,plum:iPlum,ball:iBall,
+  bird:iBird,boy:iBoy,girl:function(x,y){return iGirl(x,y,'#F8A8BC');},rabbit:iRabbit,pinecone:iPinecone,whale:iWhale,beaver:iBeaver};
 
 function cross(x,y){
   return '<g stroke="#E4572E" stroke-width="5" stroke-linecap="round">'+
@@ -421,6 +477,150 @@ function drawChain(a,b,c){
   s+=arrow(312,428,'+ '+c);
   s+=circ(470,'?','#FFF2F8','#E04A73','получилось');
   return svgWrap(s,540,180);
+}
+
+/* Ласточки на проводе: улетевшие (по номерам из gone) зачёркнуты */
+function drawWire(n,gone){
+  var cell=52, x0=30, y=80, W=x0*2+n*cell, s='';
+  s+='<line x1="6" y1="'+y+'" x2="'+(W-6)+'" y2="'+y+'" stroke="#8A6D4B" stroke-width="4" stroke-linecap="round"/>';
+  for(var i=0;i<n;i++){
+    var x=x0+i*cell;
+    if(gone.indexOf(i)>=0){
+      s+='<g opacity=".3">'+iBird(x,y-52)+'</g>'+cross(x+4,y-50);
+    }else{
+      s+=iBird(x,y-52);
+    }
+    s+='<text x="'+(x+30)+'" y="'+(y+24)+'" text-anchor="middle" font-size="15" fill="#8a7358">'+(i+1)+'</text>';
+  }
+  s+='<text x="'+(W/2)+'" y="'+(y+52)+'" text-anchor="middle" font-size="17" fill="#8a7358">Под птицами — их номера. Улетели всего '+gone.length+', хотя номера большие!</text>';
+  return svgWrap(s,W,y+66);
+}
+
+/* Уборка класса: ряд мальчиков и ряд девочек, ушедшие зачёркнуты */
+function drawCleanup(boys,girls,goneB,goneG){
+  var cell=56, x0=14, s='';
+  s+='<text x="'+x0+'" y="24" font-size="18" font-weight="700" fill="#2F6DB5">Мальчики: '+boys+'</text>';
+  for(var i=0;i<boys;i++){var x=x0+i*cell;
+    s+= i<goneB ? '<g opacity=".3">'+iBoy(x,34)+'</g>'+cross(x+2,36) : iBoy(x,34);}
+  var y2=120;
+  s+='<text x="'+x0+'" y="'+y2+'" font-size="18" font-weight="700" fill="#E04A73">Девочки: '+girls+'</text>';
+  for(var j=0;j<girls;j++){var x2=x0+j*cell;
+    s+= j<goneG ? '<g opacity=".3">'+iGirl(x2,y2+10,'#F8A8BC')+'</g>'+cross(x2+2,y2+12) : iGirl(x2,y2+10,'#F8A8BC');}
+  s+='<text x="'+x0+'" y="'+(y2+96)+'" font-size="16" fill="#8a7358">Зачёркнутые ушли поливать цветы. Вопрос — только про девочек!</text>';
+  var W=Math.max(boys,girls)*cell+40;
+  return svgWrap(s,W,y2+112);
+}
+
+/* Рост: два мальчика и столбики-сантиметры */
+function drawHeights(hi,diff){
+  var lo=hi-diff, px=2, base=210, s='';
+  s+='<line x1="20" y1="'+base+'" x2="470" y2="'+base+'" stroke="#8A6D4B" stroke-width="4" stroke-linecap="round"/>';
+  s+='<g transform="translate(90,'+(base-66)+')">'+iBoy(0,0)+'</g>';
+  s+='<rect x="152" y="'+(base-hi*px)+'" width="46" height="'+(hi*px)+'" rx="8" fill="#FFD45E" stroke="#E0A42E" stroke-width="3"/>';
+  s+='<text x="175" y="'+(base-hi*px-10)+'" text-anchor="middle" font-size="18" font-weight="700" fill="#B97F1E">'+hi+' см</text>';
+  s+='<g transform="translate(300,'+(base-66)+')">'+iBoy(0,0)+'</g>';
+  s+='<rect x="362" y="'+(base-lo*px)+'" width="46" height="'+(lo*px)+'" rx="8" fill="#8FDCBF" stroke="#57B894" stroke-width="3"/>';
+  s+='<text x="385" y="'+(base-lo*px-10)+'" text-anchor="middle" font-size="18" font-weight="700" fill="#2E8B6E">? см</text>';
+  s+='<line x1="198" y1="'+(base-hi*px)+'" x2="362" y2="'+(base-hi*px)+'" stroke="#E04A73" stroke-width="3" stroke-dasharray="6 4"/>'+
+     '<text x="280" y="'+(base-hi*px+22)+'" text-anchor="middle" font-size="16" font-weight="700" fill="#E04A73">на '+diff+' см</text>';
+  return svgWrap(s,490,240);
+}
+
+/* Дни в гнезде: солнышки — недели на яйцах, сердечки — дни с птенцами */
+function drawDays(w,e){
+  var days=w*7, list=[], i;
+  for(i=0;i<days;i++) list.push({type:'sun'});
+  for(i=0;i<e;i++) list.push({type:'heart'});
+  var g=gridSVG(list,{perRow:7,cell:50});
+  var s='<text x="6" y="24" font-size="17" font-weight="700" fill="#B97F1E">'+w+' '+plural(w,'неделя','недели','недель')+' на яйцах = '+days+' '+plural(days,'день','дня','дней')+
+    ' (солнышки) + '+e+' '+plural(e,'день','дня','дней')+' с птенцами (сердечки)</text>';
+  s+='<g transform="translate(0,34)">'+g.s+'</g>';
+  return svgWrap(s,g.w,g.h+44);
+}
+
+/* Зайцы: беляк + n русаков с весом каждого */
+function drawRabbits(w,d,n){
+  var rus=w+d, s='';
+  s+='<text x="10" y="24" font-size="17" font-weight="700" fill="#8a7358">Заяц-беляк:</text>';
+  s+='<g transform="translate(10,32)">'+iRabbit(0,0,'#F5F0E8','#B8AE9E')+'</g>';
+  s+='<text x="42" y="122" text-anchor="middle" font-size="18" font-weight="700" fill="#2F6DB5">'+w+' кг</text>';
+  s+='<text x="90" y="60" font-size="16" fill="#8a7358">Русак тяжелее на '+d+' кг:</text>'+
+     '<text x="90" y="84" font-size="19" font-weight="700" fill="#D96C47">'+w+' + '+d+' = '+rus+' кг</text>';
+  var yR=170;
+  for(var i=0;i<n;i++){var x=40+i*110;
+    s+='<g transform="translate('+x+','+yR+')">'+iRabbit(0,0,'#B07D4F','#8A5A2E')+'</g>';
+    s+='<text x="'+(x+31)+'" y="'+(yR+94)+'" text-anchor="middle" font-size="17" font-weight="700" fill="#D96C47">'+rus+' кг</text>';}
+  var formula=[]; for(var k=0;k<n;k++) formula.push(rus);
+  s+='<text x="10" y="'+(yR+128)+'" font-size="20" font-weight="700" fill="#2F6DB5">'+formula.join(' + ')+' = ?</text>';
+  var W=Math.max(40+n*110+40,470);
+  return svgWrap(s,W,yR+146);
+}
+
+/* Река: два пловца, «туда и обратно» — стрелки в обе стороны */
+function lineArrow(x1,y1,x2,y2,label,color){
+  var dir=(x2>=x1)?1:-1;
+  return '<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="'+color+'" stroke-width="4" stroke-linecap="round"/>'+
+    '<path d="M '+x2+' '+y2+' L '+(x2-12*dir)+' '+(y2-7)+' L '+(x2-12*dir)+' '+(y2+7)+' Z" fill="'+color+'"/>'+
+    '<text x="'+((x1+x2)/2)+'" y="'+(y1-8)+'" text-anchor="middle" font-size="15" font-weight="700" fill="'+color+'">'+label+'</text>';
+}
+function drawRiver(W,S,n1,n2){
+  n1=n1||'Юра'; n2=n2||'Серёжа';
+  var px=11, x0=66, yTop=44, RH=176, xEnd=x0+W*px, s='';
+  s+='<rect x="'+(x0-28)+'" y="'+yTop+'" width="28" height="'+RH+'" fill="#F2DFA7" stroke="#D9B96A" stroke-width="3"/>';
+  s+='<rect x="'+xEnd+'" y="'+yTop+'" width="28" height="'+RH+'" fill="#F2DFA7" stroke="#D9B96A" stroke-width="3"/>';
+  s+='<rect x="'+x0+'" y="'+yTop+'" width="'+(W*px)+'" height="'+RH+'" fill="#BFE3F7" stroke="#5AA9E6" stroke-width="3"/>';
+  s+='<text x="'+(x0-14)+'" y="'+(yTop+RH/2)+'" text-anchor="middle" font-size="14" fill="#A8813C" transform="rotate(-90 '+(x0-14)+' '+(yTop+RH/2)+')">берег</text>';
+  s+='<text x="'+(xEnd+14)+'" y="'+(yTop+RH/2)+'" text-anchor="middle" font-size="14" fill="#A8813C" transform="rotate(90 '+(xEnd+14)+' '+(yTop+RH/2)+')">берег</text>';
+  var yA=yTop+40;
+  s+='<text x="'+(x0-34)+'" y="'+(yA+16)+'" text-anchor="end" font-size="17" font-weight="700" fill="#2F6DB5">'+n1+'</text>';
+  s+=lineArrow(x0+8,yA,xEnd-8,yA,W+' м','#2F6DB5');
+  s+=lineArrow(xEnd-8,yA+36,x0+8,yA+36,W+' м','#2F6DB5');
+  var yB=yTop+116;
+  s+='<text x="'+(x0-34)+'" y="'+(yB+16)+'" text-anchor="end" font-size="17" font-weight="700" fill="#D96C47">'+n2+'</text>';
+  s+=lineArrow(x0+8,yB,x0+S*px,yB,S+' м','#D96C47');
+  s+=lineArrow(x0+S*px,yB+36,x0+8,yB+36,S+' м','#D96C47');
+  s+='<text x="'+((x0+xEnd)/2)+'" y="'+(yTop+RH+30)+'" text-anchor="middle" font-size="17" fill="#8a7358">«Туда и обратно» — каждый путь считаем ДВАЖДЫ!</text>';
+  return svgWrap(s,xEnd+34,yTop+RH+44);
+}
+
+/* Шишки: дятел и белка (столько же + ещё) */
+function drawCones(a,e){
+  var cell=34, perRow=13, s='', i, r, c;
+  s+='<text x="6" y="22" font-size="17" font-weight="700" fill="#8A5A2E">Дятел: '+a+' сосновых</text>';
+  for(i=0;i<a;i++){r=Math.floor(i/perRow);c=i%perRow;
+    s+='<g transform="translate('+(6+c*cell)+','+(32+r*cell)+') scale(.5)">'+iPinecone(0,0,'#B07D4F','#8A5A2E')+'</g>';}
+  var y2=32+Math.ceil(a/perRow)*cell+28;
+  s+='<text x="6" y="'+y2+'" font-size="17" font-weight="700" fill="#5C9A4D">Белка: столько же ('+a+') + ещё '+e+' еловых</text>';
+  for(i=0;i<a+e;i++){r=Math.floor(i/perRow);c=i%perRow;
+    var col=i<a?['#B07D4F','#8A5A2E']:['#7FBF6E','#5C9A4D'];
+    s+='<g transform="translate('+(6+c*cell)+','+(y2+10+r*cell)+') scale(.5)">'+iPinecone(0,0,col[0],col[1])+'</g>';}
+  var H=y2+10+Math.ceil((a+e)/perRow)*cell+10;
+  return svgWrap(s,perRow*cell+14,H);
+}
+
+/* Два кита: большой и тот, что короче */
+function drawWhales(L,diff){
+  var s='';
+  s+='<g transform="translate(20,26) scale(2.6)">'+iWhale(0,0,'#5AA9E6','#3E7CA6')+'</g>';
+  s+='<text x="118" y="168" text-anchor="middle" font-size="20" font-weight="700" fill="#2F6DB5">Синий кит: '+L+' м</text>';
+  s+='<g transform="translate(302,60) scale(1.7)">'+iWhale(0,0,'#B8C4CC','#7A8894')+'</g>';
+  s+='<text x="364" y="168" text-anchor="middle" font-size="20" font-weight="700" fill="#7A8894">Серый кит: ? м</text>';
+  s+='<text x="245" y="208" text-anchor="middle" font-size="17" fill="#8a7358">«Короче на '+diff+' м» — значит, вычитаем!</text>';
+  return svgWrap(s,490,228);
+}
+
+/* Бобр: тело + хвост = общая длина */
+function drawBeaver(body,tail){
+  var s='';
+  s+='<g transform="translate(196,8) scale(1.7)">'+iBeaver(0,0)+'</g>';
+  var y=160, x0=50, px=4;
+  s+='<rect x="'+x0+'" y="'+y+'" width="'+(body*px)+'" height="30" rx="8" fill="#A9713B" stroke="#7A5228" stroke-width="3"/>';
+  s+='<rect x="'+(x0+body*px)+'" y="'+y+'" width="'+(tail*px)+'" height="30" rx="8" fill="#8A6D4B" stroke="#6B5233" stroke-width="3"/>';
+  s+='<text x="'+(x0+body*px/2)+'" y="'+(y+54)+'" text-anchor="middle" font-size="17" font-weight="700" fill="#7A5228">тело: '+body+' см</text>';
+  s+='<text x="'+(x0+body*px+tail*px/2)+'" y="'+(y+54)+'" text-anchor="middle" font-size="17" font-weight="700" fill="#6B5233">хвост: '+tail+' см</text>';
+  s+='<path d="M '+x0+' '+(y-10)+' L '+x0+' '+(y-22)+' L '+(x0+body*px+tail*px)+' '+(y-22)+' L '+(x0+body*px+tail*px)+' '+(y-10)+'" fill="none" stroke="#E04A73" stroke-width="3"/>';
+  s+='<text x="'+(x0+(body+tail)*px/2)+'" y="'+(y-30)+'" text-anchor="middle" font-size="18" font-weight="700" fill="#E04A73">вся длина = ?</text>';
+  return svgWrap(s,x0+(body+tail)*px+16,y+70);
 }
 
 /* ---------- Особые картинки для основных задач ---------- */
@@ -921,6 +1121,197 @@ var PROBLEMS=[
   answer:14,unit:'',
   hint:'Делай действия по порядку: сначала 12 − 3, а потом результат сложи с 5.',
   explain:'12 − 3 = 9, а 9 + 5 = 14. Получилось 14.'
+},
+{
+  id:21,
+  text:'В период летних каникул Юля прочитала 28 рассказов и сказок. На сколько больше Юля прочитала рассказов, если сказок она прочитала 8?',
+  parts:[
+    {c:'bilo',l:'📚 Всего',t:'28 рассказов и сказок вместе.'},
+    {c:'ostalos',l:'📗 Сказки',t:'8 штук.'},
+    {c:'vopros',l:'❓ Что узнать',t:'На сколько рассказов БОЛЬШЕ, чем сказок?'}
+  ],
+  draw:function(){return booksSVG(28,8,'28 книг: синие — рассказы, зелёные — 8 сказок');},
+  legend:'Сначала узнай, сколько рассказов: убери сказки из всех книг. Потом сравни!',
+  drawPrompt:'Нарисуй 28 палочек-книжек и раскрась 8 — это сказки!',
+  steps:[
+    {t:'Шаг 1. Сколько рассказов?',m:'28 − 8 = 20',e:'Всего 28 книг, сказок 8 — значит, рассказов 28 − 8 = 20.'},
+    {t:'Шаг 2. Сравним',m:'20 − 8 = 12',e:'«На сколько больше» — из большего вычитаем меньшее: 20 − 8 = 12.'}
+  ],
+  answer:12,unit:'рассказов',
+  hint:'Сначала узнай, сколько рассказов: 28 − 8. Потом сравни рассказы со сказками.',
+  explain:'Рассказов 28 − 8 = 20, а 20 − 8 = 12 — рассказов на 12 больше, чем сказок.'
+},
+{
+  id:22,
+  text:'На проводе сидели 12 ласточек. Через некоторое время четвёртая и седьмая ласточки улетели. Сколько ласточек осталось сидеть на проводе?',
+  parts:[
+    {c:'bilo',l:'🐦 Было',t:'12 ласточек на проводе.'},
+    {c:'vzyali',l:'✈️ Улетели',t:'Четвёртая и седьмая — это всего 2 ласточки!'},
+    {c:'vopros',l:'❓ Что узнать',t:'Сколько осталось?'}
+  ],
+  draw:function(){return drawWire(12,[3,6]);},
+  legend:'Хитрость: «четвёртая» и «седьмая» — это НОМЕРА ласточек, а улетели всего две!',
+  drawPrompt:'Нарисуй 12 птичек в ряд, пронумеруй их и зачеркни номера 4 и 7!',
+  steps:[
+    {t:'Шаг 1. Сколько ласточек улетели?',m:'4-я и 7-я = 2 ласточки',e:'Четвёртая и седьмая — это номера. Улетели всего 2 птицы, а не 4 и не 7!'},
+    {t:'Шаг 2. Сколько осталось?',m:'12 − 2 = 10',e:'Было 12, улетели 2 — осталось 10 ласточек.'}
+  ],
+  answer:10,unit:'ласточек',
+  hint:'«Четвёртая и седьмая» — это номера двух птиц. Сколько ВСЕГО птиц улетело?',
+  explain:'Улетели всего 2 ласточки (номер 4 и номер 7), а 12 − 2 = 10. Осталось 10 ласточек.'
+},
+{
+  id:23,
+  text:'Перед осенними каникулами ребята из 2 «А» класса проводили генеральную уборку. 6 мальчиков и 7 девочек убирали класс. Затем Дина, Вася, Юля и Аня ушли поливать цветы. Сколько девочек осталось убирать класс?',
+  parts:[
+    {c:'bilo',l:'👧 Было',t:'7 девочек убирали класс (и 6 мальчиков).'},
+    {c:'vzyali',l:'🚶‍♀️ Ушли',t:'Дина, Юля и Аня — 3 девочки. А Вася — мальчик!'},
+    {c:'vopros',l:'❓ Что узнать',t:'Сколько ДЕВОЧЕК осталось?'}
+  ],
+  draw:function(){return drawCleanup(6,7,1,3);},
+  legend:'Внимание: Вася — мальчик! Вопрос только про девочек, поэтому мальчиков не считаем.',
+  drawPrompt:'Нарисуй 7 девочек и зачеркни 3 ушедших!',
+  steps:[
+    {t:'Шаг 1. Сколько девочек ушло?',m:'Дина, Юля, Аня = 3',e:'Ушли Дина, Вася, Юля и Аня. Но Вася — мальчик! Значит, девочек ушло 3.'},
+    {t:'Шаг 2. Сколько девочек осталось?',m:'7 − 3 = 4',e:'Было 7 девочек, ушли 3 — осталось 4 девочки.'}
+  ],
+  answer:4,unit:'девочки',
+  hint:'Вопрос только про девочек! Сколько ДЕВОЧЕК ушло поливать цветы? А Вася — кто?',
+  explain:'Ушли 3 девочки (Дина, Юля и Аня), а Вася — мальчик. 7 − 3 = 4 — убирать класс осталось 4 девочки.'
+},
+{
+  id:24,
+  text:'Данила выше Никиты на 4 см. Какой рост мальчика, который ниже, если рост мальчика, который выше, 93 см?',
+  parts:[
+    {c:'bilo',l:'📏 Выше',t:'Рост того, кто выше, — 93 см.'},
+    {c:'vzyali',l:'➖ Разница',t:'Данила выше Никиты на 4 см.'},
+    {c:'vopros',l:'❓ Что узнать',t:'Рост того, кто ниже.'}
+  ],
+  draw:function(){return drawHeights(93,4);},
+  legend:'Разберись, кто выше: Данила выше Никиты — значит, 93 см это рост Данилы, а Никита ниже на 4 см.',
+  drawPrompt:'Нарисуй два столбика роста — высокий и пониже!',
+  steps:[
+    {t:'Шаг 1. Чей рост 93 см?',m:'',e:'Данила выше Никиты. Рост того, кто выше, — 93 см. Значит, 93 см — это Данила.'},
+    {t:'Шаг 2. Рост Никиты',m:'93 − 4 = 89',e:'Никита ниже на 4 см: 93 − 4 = 89 см.'}
+  ],
+  answer:89,unit:'см',
+  hint:'93 см — рост того, кто ВЫШЕ. Тот, кто ниже, — на 4 см меньше. Вычитай!',
+  explain:'Данила выше — его рост 93 см, а Никита ниже на 4 см: 93 − 4 = 89 см.'
+},
+{
+  id:25,
+  text:'Клесты выводят птенцов зимой. Мама клестиха сидит на яйцах две недели и ещё 5 дней греет голеньких птенцов. Сколько всего дней самка клеста не сходит с гнезда?',
+  parts:[
+    {c:'bilo',l:'🥚 На яйцах',t:'Две недели — а в неделе 7 дней!'},
+    {c:'vzyali',l:'➕ Ещё',t:'5 дней греет птенцов.'},
+    {c:'vopros',l:'❓ Что узнать',t:'Сколько ВСЕГО дней?'}
+  ],
+  draw:function(){return drawDays(2,5);},
+  legend:'«Всего» — значит, складываем. Но сначала переведи недели в дни!',
+  drawPrompt:'Нарисуй 2 ряда по 7 солнышек и ещё 5 сердечек!',
+  steps:[
+    {t:'Шаг 1. Недели → дни',m:'2 × 7 = 14',e:'В неделе 7 дней, две недели — это 14 дней.'},
+    {t:'Шаг 2. Прибавим 5 дней',m:'14 + 5 = 19',e:'14 дней на яйцах и ещё 5 дней с птенцами — всего 19 дней.'}
+  ],
+  answer:19,unit:'дней',
+  hint:'Две недели — это 2 × 7 = 14 дней. Потом прибавь ещё 5.',
+  explain:'Две недели — это 14 дней, плюс ещё 5 дней: 14 + 5 = 19. Мама клестиха не сходит с гнезда 19 дней.'
+},
+{
+  id:26,
+  text:'Заяц-русак крупнее зайца-беляка и на 2 кг тяжелее. Сколько весят 3 зайца-русака, если заяц-беляк весит 3 кг?',
+  parts:[
+    {c:'bilo',l:'🐰 Беляк',t:'Весит 3 кг.'},
+    {c:'vzyali',l:'➕ Русак',t:'Тяжелее на 2 кг — вес русака найдём в шаге 1!'},
+    {c:'vopros',l:'❓ Что узнать',t:'Сколько весят 3 русака?'}
+  ],
+  draw:function(){return drawRabbits(3,2,3);},
+  legend:'Сначала узнай вес ОДНОГО русака, а потом — трёх. Здесь два действия!',
+  drawPrompt:'Нарисуй 3 зайцев и подпиши вес каждого!',
+  steps:[
+    {t:'Шаг 1. Вес одного русака',m:'3 + 2 = 5',e:'Русак тяжелее беляка на 2 кг: 3 + 2 = 5 кг.'},
+    {t:'Шаг 2. Вес трёх русаков',m:'3 × 5 = 15',e:'Три русака по 5 кг: 3 × 5 = 15 кг. Можно и сложить: 5 + 5 + 5 = 15.'}
+  ],
+  answer:15,unit:'кг',
+  hint:'Сначала узнай вес одного русака: 3 + 2. Потом возьми три таких.',
+  explain:'Русак весит 3 + 2 = 5 кг, а три русака: 3 × 5 = 15 кг.'
+},
+{
+  id:27,
+  text:'Ширина реки 30 метров. Юра и Серёжа соревновались в плавании. Юра переплыл реку и вернулся вплавь назад, а Серёжа проплыл 20 метров и вернулся назад. На сколько метров больше проплыл Юра, чем Серёжа?',
+  parts:[
+    {c:'bilo',l:'🏊 Юра',t:'30 м туда и 30 м обратно.'},
+    {c:'ostalos',l:'🏊 Серёжа',t:'20 м туда и 20 м обратно.'},
+    {c:'vopros',l:'❓ Что узнать',t:'На сколько метров Юра проплыл больше?'}
+  ],
+  draw:function(){return drawRiver(30,20);},
+  legend:'«Туда и назад» — каждый плывёт ДВА раза: туда и обратно!',
+  drawPrompt:'Нарисуй реку и стрелки: туда и обратно для каждого мальчика!',
+  steps:[
+    {t:'Шаг 1. Сколько проплыл Юра?',m:'30 + 30 = 60',e:'Юра переплыл реку (30 м) и вернулся (ещё 30 м): всего 60 м.'},
+    {t:'Шаг 2. Сколько проплыл Серёжа?',m:'20 + 20 = 40',e:'Серёжа проплыл 20 м и вернулся: 20 + 20 = 40 м.'},
+    {t:'Шаг 3. Сравним',m:'60 − 40 = 20',e:'Юра проплыл 60 м, Серёжа 40 м. Разница: 60 − 40 = 20 м.'}
+  ],
+  answer:20,unit:'м',
+  hint:'Сначала посчитай, сколько проплыл каждый: «туда и назад» — это два пути!',
+  explain:'Юра проплыл 30 + 30 = 60 м, Серёжа 20 + 20 = 40 м, а 60 − 40 = 20. Юра проплыл на 20 м больше.'
+},
+{
+  id:28,
+  text:'Дятел выклевал семена из 20 сосновых шишек, а белочка разгрызла столько же сосновых и ещё 10 еловых шишек. Сколько всего шишек ушло на обед белке и дятлу?',
+  parts:[
+    {c:'bilo',l:'🐦 Дятел',t:'20 сосновых шишек.'},
+    {c:'vzyali',l:'🐿️ Белка',t:'Столько же сосновых (20) + ещё 10 еловых.'},
+    {c:'vopros',l:'❓ Что узнать',t:'Сколько ВСЕГО шишек?'}
+  ],
+  draw:function(){return drawCones(20,10);},
+  legend:'«Столько же» — это ещё 20! У белки 20 + 10 шишек.',
+  drawPrompt:'Нарисуй шишки двумя рядами: у дятла и у белки!',
+  steps:[
+    {t:'Шаг 1. Сколько шишек у белки?',m:'20 + 10 = 30',e:'«Столько же сосновых» — это 20, плюс ещё 10 еловых: всего 30 шишек.'},
+    {t:'Шаг 2. Всего на обед',m:'20 + 30 = 50',e:'Дятел — 20 шишек, белка — 30 шишек. Вместе: 20 + 30 = 50.'}
+  ],
+  answer:50,unit:'шишек',
+  hint:'«Столько же» — значит 20. У белки 20 + 10 шишек. Теперь сложи шишки дятла и белки.',
+  explain:'Белка разгрызла 20 + 10 = 30 шишек, а вместе с дятлом: 20 + 30 = 50 шишек.'
+},
+{
+  id:29,
+  text:'Синий кит во много раз больше любого обитателя Земли и достигает в длину 23 метров, а серый кит на 8 метров короче синего кита. Какова длина серого кита?',
+  parts:[
+    {c:'bilo',l:'🐋 Синий кит',t:'23 метра.'},
+    {c:'vzyali',l:'➖ Разница',t:'Серый кит на 8 м короче.'},
+    {c:'vopros',l:'❓ Что узнать',t:'Длину серого кита.'}
+  ],
+  draw:function(){return drawWhales(23,8);},
+  legend:'«Короче на 8 метров» — значит, вычитаем 8 из длины синего кита.',
+  drawPrompt:'Нарисуй большого и маленького кита и подпиши их длину!',
+  steps:[
+    {t:'Шаг 1. Что значит «короче»?',m:'',e:'Серый кит короче синего на 8 м — его длина МЕНЬШЕ. Значит, вычитаем.'},
+    {t:'Шаг 2. Вычтем',m:'23 − 8 = 15',e:'23 − 8 = 15. Длина серого кита — 15 метров.'}
+  ],
+  answer:15,unit:'м',
+  hint:'«На 8 метров короче» — вычитай 8 из 23.',
+  explain:'Серый кит на 8 м короче синего: 23 − 8 = 15. Длина серого кита — 15 метров.'
+},
+{
+  id:30,
+  text:'Средняя длина тела речного бобра 68 см, а длина его хвоста 30 см. Какова общая длина этого животного?',
+  parts:[
+    {c:'bilo',l:'🦫 Тело',t:'68 см.'},
+    {c:'vzyali',l:'➕ Хвост',t:'30 см.'},
+    {c:'vopros',l:'❓ Что узнать',t:'ОБЩУЮ длину: тело + хвост.'}
+  ],
+  draw:function(){return drawBeaver(68,30);},
+  legend:'«Общая длина» — это тело и хвост ВМЕСТЕ. Складываем!',
+  drawPrompt:'Нарисуй бобра и подпиши: тело 68 см, хвост 30 см!',
+  steps:[
+    {t:'Шаг 1. Из чего складывается длина?',m:'',e:'Вся длина животного — это тело плюс хвост: 68 см и 30 см.'},
+    {t:'Шаг 2. Сложим',m:'68 + 30 = 98',e:'68 + 30 = 98. Общая длина бобра — 98 см.'}
+  ],
+  answer:98,unit:'см',
+  hint:'«Общая длина» — сложи тело и хвост: 68 + 30.',
+  explain:'Тело 68 см плюс хвост 30 см: 68 + 30 = 98. Общая длина бобра — 98 см.'
 }
 ];
 
@@ -931,6 +1322,9 @@ function plural(n,one,few,many){var m=n%10,h=n%100;if(m===1&&h!==11)return one;i
 var GIRLS=['Оля','Маша','Катя','Лена','Даша','Соня'];
 var BOYS=['Миша','Коля','Петя','Вася','Толя','Саша'];
 function twoGirls(){var a=pick(GIRLS),b=pick(GIRLS);while(b===a)b=pick(GIRLS);return[a,b];}
+var BOYSG=['Миши','Коли','Пети','Васи','Толи','Саши'];
+var ORDF=['первая','вторая','третья','четвёртая','пятая','шестая','седьмая','восьмая','девятая','десятая','одиннадцатая','двенадцатая','тринадцатая','четырнадцатая'];
+function takeNames(arr,k){var c=arr.slice(),out=[];while(out.length<k&&c.length){out.push(c.splice(Math.floor(Math.random()*c.length),1)[0]);}return out;}
 
 var GEN={
 1:function(){
@@ -1240,6 +1634,148 @@ var GEN={
     steps:[
       {t:'Шаг 1. Уменьшили',m:a+' − '+b+' = '+mid,e:'Вычитаем: '+mid+'.'},
       {t:'Шаг 2. Сложили',m:mid+' + '+c+' = '+ans,e:'Прибавляем '+c+': получилось '+ans+'.'}
+    ]
+  };
+},
+21:function(){
+  var T=rnd(22,30), S=rnd(5,9), r=T-S, ans=r-S, g=pick(GIRLS);
+  return {
+    text:'За лето '+g+' прочитала '+T+' рассказов и сказок. На сколько больше '+g+' прочитала рассказов, если сказок она прочитала '+S+'?',
+    answer:ans, unit:'рассказов',
+    hint:'Сначала узнай, сколько рассказов: '+T+' − '+S+'. Потом сравни рассказы со сказками.',
+    draw:function(){return booksSVG(T,S,T+' книг: синие — рассказы, зелёные — '+S+' сказок');},
+    steps:[
+      {t:'Шаг 1. Сколько рассказов?',m:T+' − '+S+' = '+r,e:'Из всех книг убираем сказки: рассказов '+r+'.'},
+      {t:'Шаг 2. Сравним',m:r+' − '+S+' = '+ans,e:'«На сколько больше» — из большего вычитаем меньшее: '+ans+'.'}
+    ]
+  };
+},
+22:function(){
+  var n=rnd(9,14);
+  var i1=rnd(1,n-3), i2=i1+rnd(2,Math.min(n-1-i1,5));
+  var birds=pick([['ласточек','ласточки'],['синиц','синицы'],['галок','галки']]);
+  return {
+    text:'На проводе сидели '+n+' '+birds[0]+'. Через некоторое время '+ORDF[i1]+' и '+ORDF[i2]+' '+birds[1]+' улетели. Сколько '+birds[0]+' осталось сидеть на проводе?',
+    answer:n-2, unit:birds[0],
+    hint:'«'+ORDF[i1]+' и '+ORDF[i2]+'» — это номера двух птиц. Сколько ВСЕГО птиц улетело?',
+    draw:function(){return drawWire(n,[i1,i2]);},
+    steps:[
+      {t:'Шаг 1. Сколько улетело?',m:'2 птицы',e:'Улетели две: с номером '+(i1+1)+' и с номером '+(i2+1)+'. Номера — это не количество!'},
+      {t:'Шаг 2. Сколько осталось?',m:n+' − 2 = '+(n-2),e:'Было '+n+', улетели 2 — осталось '+(n-2)+'.'}
+    ]
+  };
+},
+23:function(){
+  var b=rnd(4,7), g=rnd(6,9), k=rnd(2,3);
+  var girls=takeNames(GIRLS,k), boy=pick(BOYS);
+  var names=girls.slice(); names.splice(rnd(1,k),0,boy);
+  var namesTxt=names.slice(0,-1).join(', ')+' и '+names[names.length-1];
+  var ans=g-k;
+  return {
+    text:b+' '+plural(b,'мальчик','мальчика','мальчиков')+' и '+g+' '+plural(g,'девочка','девочки','девочек')+' убирали класс. Затем '+namesTxt+' ушли поливать цветы. Сколько девочек осталось убирать класс?',
+    answer:ans, unit:plural(ans,'девочка','девочки','девочек'),
+    hint:'Вопрос только про девочек! Сколько ДЕВОЧЕК ушло поливать цветы? А '+boy+' — кто?',
+    draw:function(){return drawCleanup(b,g,1,k);},
+    steps:[
+      {t:'Шаг 1. Сколько девочек ушло?',m:girls.join(', ')+' = '+k,e:boy+' — мальчик! Значит, девочек ушло '+k+'.'},
+      {t:'Шаг 2. Сколько осталось?',m:g+' − '+k+' = '+ans,e:'Было '+g+' '+plural(g,'девочка','девочки','девочек')+', ушло '+k+' — осталось '+ans+'.'}
+    ]
+  };
+},
+24:function(){
+  var H=rnd(88,99), D=rnd(3,6), ans=H-D;
+  var i=Math.floor(Math.random()*BOYS.length), j;
+  do{j=Math.floor(Math.random()*BOYS.length);}while(j===i);
+  return {
+    text:BOYS[i]+' выше '+BOYSG[j]+' на '+D+' см. Какой рост мальчика, который ниже, если рост мальчика, который выше, '+H+' см?',
+    answer:ans, unit:'см',
+    hint:H+' см — рост того, кто ВЫШЕ. Тот, кто ниже, — на '+D+' см меньше. Вычитай!',
+    draw:function(){return drawHeights(H,D);},
+    steps:[
+      {t:'Шаг 1. Чей рост '+H+' см?',m:'',e:BOYS[i]+' выше — значит, '+H+' см это рост мальчика по имени '+BOYS[i]+'.'},
+      {t:'Шаг 2. Рост того, кто ниже',m:H+' − '+D+' = '+ans,e:BOYS[j]+' ниже на '+D+' см: '+ans+' см.'}
+    ]
+  };
+},
+25:function(){
+  var w=rnd(2,3), e=rnd(3,6), days=w*7, ans=days+e;
+  var bird=pick([['Мама клестиха','самка клеста'],['Мама синица','мама-синица'],['Мама воробьиха','мама-воробьиха']]);
+  return {
+    text:bird[0]+' сидит на яйцах '+w+' '+plural(w,'неделю','недели','недель')+' и ещё '+e+' '+plural(e,'день','дня','дней')+' греет голеньких птенцов. Сколько всего дней '+bird[1]+' не сходит с гнезда?',
+    answer:ans, unit:'дней',
+    hint:'В одной неделе 7 дней. Переведи недели в дни, потом прибавь ещё '+e+'.',
+    draw:function(){return drawDays(w,e);},
+    steps:[
+      {t:'Шаг 1. Недели → дни',m:w+' × 7 = '+days,e:'В неделе 7 дней, значит '+w+' '+plural(w,'неделя','недели','недель')+' — это '+days+' '+plural(days,'день','дня','дней')+'.'},
+      {t:'Шаг 2. Прибавим',m:days+' + '+e+' = '+ans,e:days+' + '+e+' = '+ans+'. Всего '+ans+' '+plural(ans,'день','дня','дней')+'.'}
+    ]
+  };
+},
+26:function(){
+  var w=rnd(3,4), d=rnd(1,3), n=rnd(2,4), rus=w+d, ans=n*rus;
+  return {
+    text:'Заяц-русак на '+d+' кг тяжелее зайца-беляка. Сколько весят '+n+' '+plural(n,'заяц-русак','зайца-русака','зайцев-русаков')+', если заяц-беляк весит '+w+' кг?',
+    answer:ans, unit:'кг',
+    hint:'Сначала узнай вес одного русака: '+w+' + '+d+'.',
+    draw:function(){return drawRabbits(w,d,n);},
+    steps:[
+      {t:'Шаг 1. Вес одного русака',m:w+' + '+d+' = '+rus,e:'Русак тяжелее беляка на '+d+' кг: '+rus+' кг.'},
+      {t:'Шаг 2. Вес всех русаков',m:n+' × '+rus+' = '+ans,e:n+' '+plural(n,'заяц','зайца','зайца')+' по '+rus+' кг — всего '+ans+' кг.'}
+    ]
+  };
+},
+27:function(){
+  var W=rnd(20,35), S=rnd(10,W-8), ans=2*W-2*S;
+  var bs=takeNames(BOYS,2);
+  return {
+    text:'Ширина реки '+W+' метров. '+bs[0]+' и '+bs[1]+' соревновались в плавании. '+bs[0]+' переплыл реку и вернулся вплавь назад, а '+bs[1]+' проплыл '+S+' метров и вернулся назад. На сколько метров больше проплыл '+bs[0]+', чем '+bs[1]+'?',
+    answer:ans, unit:'м',
+    hint:'«Туда и назад» — это два пути! Посчитай, сколько метров проплыл каждый.',
+    draw:function(){return drawRiver(W,S,bs[0],bs[1]);},
+    steps:[
+      {t:'Шаг 1. Путь '+bs[0],m:W+' + '+W+' = '+(2*W),e:bs[0]+' проплыл туда и обратно: '+(2*W)+' м.'},
+      {t:'Шаг 2. Путь '+bs[1],m:S+' + '+S+' = '+(2*S),e:bs[1]+' проплыл '+(2*S)+' м.'},
+      {t:'Шаг 3. Сравним',m:(2*W)+' − '+(2*S)+' = '+ans,e:'Разница: '+ans+' м.'}
+    ]
+  };
+},
+28:function(){
+  var a=rnd(12,25), e=rnd(5,10), ans=2*a+e;
+  return {
+    text:'Дятел выклевал семена из '+a+' сосновых шишек, а белочка разгрызла столько же сосновых и ещё '+e+' еловых шишек. Сколько всего шишек ушло на обед белке и дятлу?',
+    answer:ans, unit:'шишек',
+    hint:'«Столько же» — значит '+a+'. У белки '+a+' + '+e+' шишек. Теперь сложи все шишки.',
+    draw:function(){return drawCones(a,e);},
+    steps:[
+      {t:'Шаг 1. Шишки белки',m:a+' + '+e+' = '+(a+e),e:'«Столько же сосновых» — это '+a+', плюс ещё '+e+' еловых: '+(a+e)+'.'},
+      {t:'Шаг 2. Всего',m:a+' + '+(a+e)+' = '+ans,e:'Дятел — '+a+', белка — '+(a+e)+'. Вместе '+ans+'.'}
+    ]
+  };
+},
+29:function(){
+  var L=rnd(20,30), d=rnd(4,9), ans=L-d;
+  return {
+    text:'Синий кит достигает в длину '+L+' '+plural(L,'метр','метра','метров')+', а серый кит на '+d+' '+plural(d,'метр','метра','метров')+' короче синего кита. Какова длина серого кита?',
+    answer:ans, unit:'м',
+    hint:'«На '+d+' короче» — вычитай '+d+' из '+L+'.',
+    draw:function(){return drawWhales(L,d);},
+    steps:[
+      {t:'Шаг 1. «Короче» — что делать?',m:'',e:'Серый кит короче — его длина МЕНЬШЕ. Значит, вычитаем.'},
+      {t:'Шаг 2. Вычтем',m:L+' − '+d+' = '+ans,e:L+' − '+d+' = '+ans+'. Длина серого кита — '+ans+' м.'}
+    ]
+  };
+},
+30:function(){
+  var b=rnd(55,75), t=rnd(25,35), ans=b+t;
+  var an=pick([['речного бобра','его'],['выдры','её']]);
+  return {
+    text:'Средняя длина тела '+an[0]+' '+b+' см, а длина '+an[1]+' хвоста '+t+' см. Какова общая длина этого животного?',
+    answer:ans, unit:'см',
+    hint:'«Общая длина» — сложи тело и хвост: '+b+' + '+t+'.',
+    draw:function(){return drawBeaver(b,t);},
+    steps:[
+      {t:'Шаг 1. Из чего складывается длина?',m:'',e:'Вся длина — это тело ('+b+' см) плюс хвост ('+t+' см).'},
+      {t:'Шаг 2. Сложим',m:b+' + '+t+' = '+ans,e:b+' + '+t+' = '+ans+'. Общая длина — '+ans+' см.'}
     ]
   };
 }
